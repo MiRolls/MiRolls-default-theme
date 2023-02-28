@@ -1,5 +1,3 @@
 vite
 .idea
-config
-install
-releases
+node_modules
