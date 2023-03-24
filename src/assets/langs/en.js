@@ -8,6 +8,7 @@ const en = {
     appBarHome: "Home",
     appBarSearch: "Questionnaire result query",
     appBarMake: "Make questionnaire",
+    loginOrRegister:"Login / Register",
     makeOptionsNumber:"Number of options",
     makeRadio:"Add single choice",
     makeChoice:"Add multiple choice",

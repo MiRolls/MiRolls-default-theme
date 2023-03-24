@@ -1,7 +1,7 @@
 <template>
     <span>
         <img v-if="loginStates" :src="userHeadImg" alt="Img" id="head">
-        <button v-else id="loginOrRegister">登录 / 注册</button>
+        <button v-else id="loginOrRegister">{{$t("loginOrRegister")}}</button>
     </span>
 </template>
 <script>

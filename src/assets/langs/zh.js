@@ -8,6 +8,7 @@ const zh = {
     appBarHome: "首页",
     appBarSearch: "问卷结果查询",
     appBarMake: "制作问卷",
+    loginOrRegister:"登录 / 注册",
     makeOptionsNumber:"选项数量",
     makeRadio:"添加单选题",
     makeChoice:"添加多选题",
