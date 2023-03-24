@@ -26,6 +26,7 @@ const zh = {
     messageDatabaseError:"服务器错误！",
     messageUpdateSuccess:"提交成功！",
     messageUpdateSuccess2:"请牢记你的查询码！牢记！访问",
+    messageLoading: "正在提交您的问卷...",
     messageUpdateSuccess3:"即可开始答题",
     savedNone:"这里啥都没有",
     messageCookiesError:"不能保存草稿！请查看您的浏览器配置！",

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://img.lmfans.cn/i/2023/01/26/uqwc3n.png" id="favicon" type="image/x-icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>米卷</title>
+<script type="module" src="/_assets/index.f3393c48.js"></script>
+<link rel="stylesheet" href="/_assets/style.02565b10.css">
+</head>
+<body>
+  <div id="app"></div>
+  <!--suppress HtmlUnknownTarget -->
+  
+    <script>
+        fetch("/get/site",{
+            method:"POST"
+        }).then(res => res.json()).then(data=>{
+            document.getElementById("favicon").href = data.logo;
+            document.documentElement.lang=data.lang;
+        })
+    </script>
+</body>
+</html>

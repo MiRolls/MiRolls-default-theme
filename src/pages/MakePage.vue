@@ -7,15 +7,13 @@
     <PageFooter style="margin-left: 30%"/>
   </div>
 </template>
-<!--suppress JSUnresolvedFunction -->
 <script>
 import AppBar from "../components/AppBar.vue";
 import MakePageLeftControl from "../components/MakePageLeftControl.vue";
 import PageFooter from "../components/PageFooter.vue";
 import RollsPage from "../components/RollsPage.vue";
 import Message from "../components/Message.vue";
-
-// noinspection JSUnresolvedVariable
+import axios from "axios";
 export default {
   name:"MakePage",
   methods: {
@@ -33,19 +31,20 @@ export default {
       }
     },
     submitRoll() {
+      this.message = this.$t('messageLoading')
       fetch("/roll/create",{
         method:"post",
         body:this.$refs.rollsPage.getRoll()
-      }).then(res=>res.json()).then(date=>{
-        if(date.message === "success"){
+      }).then(res=>res.json()).then(data=>{
+        if(data.message === "success"){
           // if success
-          console.log("success",date)
+          console.log("success",data)
           // noinspection JSUnresolvedVariable
-          this.message = this.$t('messageUpdateSuccess') + `${date.rollCode}, ${this.$t("messageUpdateSuccess2")} ${date.rollLink} ${this.$t("messageUpdateSuccess3")}`
+          this.message = this.$t('messageUpdateSuccess') + `${data.rollCode}, ${this.$t("messageUpdateSuccess2")} ${this.siteLink}${data.rollLink} ${this.$t("messageUpdateSuccess3")}`
         }else {
           // if error
           // noinspection JSUnresolvedVariable
-          this.message = this.$t('messageDatabaseError') + ` Error:${date.error}, ErrorType:${date.errorType}`
+          this.message = this.$t('messageDatabaseError') + ` Error:${data.error}, ErrorType:${data.errorType}`
         }
       }).catch(()=>{
         this.message = this.$t('messageDatabaseError')
@@ -56,9 +55,14 @@ export default {
     return{
       rollsTitle:this.$t("makeTitleNormal"),
       message: "",
+      siteLink:"data"
     }
   },
   components: {RollsPage, PageFooter, MakePageLeftControl, AppBar,Message},
-
+  mounted() {
+    axios.post("/get/site").then(data=>{
+      this.siteLink = data.data.link
+    })
+  }
 }
 </script>
