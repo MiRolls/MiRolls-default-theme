@@ -20,8 +20,8 @@ export default {
   },
   data(){
     return{
-      logo:"https://img.lmfans.cn/i/2023/01/26/uqwc3n.png",
-      name:"米卷"
+      logo:"",
+      name:"",
     }
   }
 }

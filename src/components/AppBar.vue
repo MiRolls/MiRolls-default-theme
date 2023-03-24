@@ -34,7 +34,7 @@
           logo:""
         },
         style:{
-          backgroundColor: "rgb(21, 127, 248)"
+          backgroundColor: ""
         }
       }
     },
