@@ -14,7 +14,7 @@
       data(){
         return {
           style:{
-            backgroundColor: ""
+            backgroundColor: "rgb(21, 127, 248)"
           }
         }
       },

@@ -41,7 +41,7 @@ export default {
     return {
       radioNumber: 3,
       choiceNumber: 3,
-      style:""
+      style:"rgb(21, 127, 248)"
     }
   },
   created() {
