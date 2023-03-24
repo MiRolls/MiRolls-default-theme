@@ -1,7 +1,7 @@
 <template>
   <div class="footer" :style="{marginTop:margin}">
     <h1>{{name}}</h1>
-    <p class="footerButton">{{ $t("footerInt") }}</p>
+    <p class="footerButton" v-if="icpBoolean">{{ $t("footerInt") }}</p>
     <p class="footerButton" :style="icpStyle" @click="goIcp">{{ icp }}</p>
   </div>
 </template>
@@ -20,8 +20,8 @@
     },
     data(){
       return {
-        name:"米卷",
-        icp: "鲁ICP备2022023454号-25",
+        name:"",
+        icp: "",
         icpBoolean:false,
         icpStyle:{}
       }

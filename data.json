@@ -1,0 +1,10 @@
+{
+  "message": "success",
+  "name": "米卷",
+  "link": "https://localhost:3000/",
+  "logo": "/favicon.png",
+  "mainColor": "rgb(21, 127, 248)",
+  "icp": "A nice questionnaire system",
+  "lang": "zh",
+  "needIcp": 0
+}
