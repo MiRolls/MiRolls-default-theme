@@ -54,7 +54,7 @@ export default {
     return{
       rollsTitle:this.$t("makeTitleNormal"),
       message: "",
-      siteLink:"data"
+      siteLink:""
     }
   },
   components: {RollsPage, PageFooter, MakePageLeftControl, AppBar,Message},
