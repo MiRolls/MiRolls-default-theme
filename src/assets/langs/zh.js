@@ -33,6 +33,7 @@ const zh = {
     messageCookiesError:"不能保存草稿！请查看您的浏览器配置！",
     messageCookiesSuccess:"存储完毕！请到'问卷结果查询'页面查看保存的问卷",
     queryBigDataOverview:"大数据概览",
-    queryDetails:" 问卷明细"
+    queryDetails:" 问卷明细",
+    enterYourQueryCode: "输入你的查询码",
 }
 export default zh;

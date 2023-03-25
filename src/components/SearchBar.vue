@@ -1,6 +1,6 @@
 <template>
   <div id="searchBar">
-    <input type="text" id="searchInput" placeholder="Enter Your Code"/>
+    <input type="text" id="searchInput" :placeholder="$t('enterYourQueryCode')"/>
   </div>
 </template>
 
@@ -25,7 +25,8 @@ export default {
   font-size: 16px;
   border: none;
   border-bottom: 1px black solid;
-  width: calc(100% - 150px);
+  /*width: calc(100% - 150px);*/
+  width: 95%;
   outline: none;
   text-align: left;
 }

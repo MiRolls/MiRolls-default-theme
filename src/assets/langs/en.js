@@ -33,6 +33,7 @@ const en = {
     messageCookiesError:"Cannot save draft! Please change you browser setting",
     messageCookiesSuccess:"Saved draft! If you need see, pleases see 'Quest. result query' page.",
     queryBigDataOverview:"Big data overview",
-    queryDetails: " Answer details"
+    queryDetails: " Answer details",
+    enterYourQueryCode: "Enter your query code",
 }
 export default en;
