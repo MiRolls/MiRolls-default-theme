@@ -12,17 +12,20 @@
 <script>
   import titleBtn from "./titleBtn.vue";
   import LoginOrRegister from "./LoginOrRegister.vue"
+  import {useRouter} from "vue-router";
   export default {
     name: 'AppBar',
       methods: {
       goHome() {
-        window.location.href = "/#/";
+        // window.location.href = "/#/";
+        // this.$router.push({path: "/"})
+        this.$router.push("/")
       },
       resSearch() {
-        window.location.href = "/#/search";
+        this.$router.push("/search")
       },
       makeQtn() {
-        window.location.href = "/#/make";
+        this.$router.push("/make")
       }
     },
     components: {titleBtn, LoginOrRegister},

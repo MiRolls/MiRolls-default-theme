@@ -2,35 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './index.css'
 import VueCookies from 'vue-cookies'
-import {createRouter,createWebHashHistory} from 'vue-router'
-import MakePage from "./pages/MakePage.vue";
-import IndexPage from "./pages/IndexPage.vue";
-import SearchPage from "./pages/SearchPage.vue";
 import zh from "./assets/langs/zh";
 import en from "./assets/langs/en";
 import {createI18n} from "vue-i18n";
-import QueryPage from "./pages/QueryBigData.vue";
-import QueryDetails from "./pages/QueryDetails.vue";
+import router from "./routerSetting"
 
-const router = createRouter({
-    history:createWebHashHistory(),
-    routes:[{
-        path:"/make",
-        component: MakePage
-    },{
-        path:"",
-        component: IndexPage
-    },{
-        path:"/search",
-        component: SearchPage,
-    },{
-        path:"/queryBigData",
-        component: QueryPage,
-    },{
-        path:"/queryDetails",
-        component:QueryDetails
-    }]
-});
 
 fetch("/get/site",{
     method:"POST"
@@ -65,7 +41,7 @@ fetch("/get/site",{
 })
 
 // const app =createApp(App);
-// app.use(router);
+// app.use(routerSetting);
 // app.use(VueCookies);
 // app.mount('#app');
 // Dev mode

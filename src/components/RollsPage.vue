@@ -191,6 +191,7 @@ export default {
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.61);
   padding: 30px 50px 30px 50px;
   margin-top: 100px;
+  margin-bottom: 50px;
   margin-left: calc(30% + 10%);
   min-height: calc(100% - 123px - 60px);
   border-radius: 1em;

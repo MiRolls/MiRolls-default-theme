@@ -29,7 +29,8 @@
       },
       methods:{
         goMake(){
-          window.location.href = "/#/make"
+          // window.location.href = "/#/make"
+          this.$router.push("/make")
         }
       }
     }
