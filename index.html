@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <link rel="shortcut icon" href="https://img.lmfans.cn/i/2023/01/26/uqwc3n.png" id="favicon" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="titleForIndex"></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titleForIndex"></title>
 </head>
 <body>
-  <div id="app"></div>
-  <!--suppress HtmlUnknownTarget -->
-  <script type="module" src="/src/main.js"></script>
-    <script>
-        fetch("/get/site",{
-            method:"POST"
-        }).then(res => res.json()).then(site=>{
+<div id="app"></div>
+<!--suppress HtmlUnknownTarget -->
+<script type="module" src="/src/main.js"></script>
+<script>
+    function request(mode) {
+        if (mode === "test"){
+            let site = {
+                message: "success",
+                name: "米卷",
+                link: "https://localhost:3000/",
+                logo: "/favicon.png",
+                mainColor: "rgb(21, 127, 248)",
+                icp: "A nice questionnaire system",
+                lang: "zh",
+                needIcp: 0
+            }
             document.getElementById("favicon").href = site.logo;
-            document.documentElement.lang=site.lang;
+            document.documentElement.lang = site.lang;
             window.site = site;
             document.getElementById("titleForIndex").innerHTML = site.name;
-        })
-    </script>
+        }else{
+            fetch("/get/site", {
+                method: "POST"
+            }).then(res => res.json()).then(site => {
+                document.getElementById("favicon").href = site.logo;
+                document.documentElement.lang = site.lang;
+                window.site = site;
+                document.getElementById("titleForIndex").innerHTML = site.name;
+            })
+        }
+    }
+    request("test")
+</script>
 </body>
 </html>
