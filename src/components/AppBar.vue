@@ -2,7 +2,7 @@
     <div id="bar" :style="style">
         <span id="title">{{ site.name }}</span>
         <span id="secTitle">{{ site.link }}</span>
-        <titleBtn :innerHtml="$t('appBarHome')" @click="goHome" />
+        <titleBtn :innerHtml="$t('appBarHome')" @click="goHome" style="margin-left: 50px"/>
         <titleBtn :innerHtml="$t('appBarSearch')" @click="resSearch" />
         <titleBtn :innerHtml="$t('appBarMake')" @click="makeQtn" />
         <!-- <LoginOrRegister loginStates="true"></LoginOrRegister> -->
