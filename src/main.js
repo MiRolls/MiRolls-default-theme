@@ -6,6 +6,7 @@ import zh from "./assets/langs/zh";
 import en from "./assets/langs/en";
 import {createI18n} from "vue-i18n";
 import router from "./routerSetting"
+import langList from "../langList";
 
 let i18n;
 // fetch("/get/site",{
@@ -23,10 +24,7 @@ let i18n;
 // }).catch(()=>{
 i18n = new createI18n({
     locale: window.site.lang,
-    messages: {
-        en,
-        zh,
-    }
+    messages: langList
 })
 // })
 const app = createApp(App);
