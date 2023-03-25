@@ -42,14 +42,15 @@
       }
     },
     created(){
-      fetch("/get/site",{
-        method:"post",
-      }).then(res=>res.json()).then(data=>{
-        console.log(data)
-        this.site = data;
-        // noinspection JSUnresolvedVariable
-        this.style.backgroundColor = data.mainColor;
-      })
+      // fetch("/get/site",{
+      //   method:"post",
+      // }).then(res=>res.json()).then(data=>{
+      //   console.log(data)
+      //   this.site = data;
+        // this.style.backgroundColor = data.mainColor;
+      // })
+      this.site = window.site
+      this.style.backgroundColor = window.site.mainColor
     },
   }
 </script>

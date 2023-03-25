@@ -13,7 +13,6 @@ import MakePageLeftControl from "../components/MakePageLeftControl.vue";
 import PageFooter from "../components/PageFooter.vue";
 import RollsPage from "../components/RollsPage.vue";
 import Message from "../components/Message.vue";
-import axios from "axios";
 export default {
   name:"MakePage",
   methods: {
@@ -60,9 +59,10 @@ export default {
   },
   components: {RollsPage, PageFooter, MakePageLeftControl, AppBar,Message},
   mounted() {
-    axios.post("/get/site").then(data=>{
-      this.siteLink = data.data.link
-    })
+    // axios.post("/get/site").then(data=>{
+    //   this.siteLink = data.data.link
+    // })
+    this.siteLink = window.site.link
   }
 }
 </script>

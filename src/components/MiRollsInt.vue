@@ -8,15 +8,17 @@
 export default {
   name:"MiRollsInt",
   created(){
-    fetch("/get/site",{
-      method:"post",
-    }).then(res=>res.json()).then(data=>{
-      data.name
-      // noinspection JSUnresolvedVariable
-      this.logo = data.logo;
-      this.name = data.name;
+    // fetch("/get/site",{
+    //   method:"post",
+    // }).then(res=>res.json()).then(data=>{
+    //   data.name
+    //   noinspection JSUnresolvedVariable
+    //   this.logo = data.logo;
+    //   this.name = data.name;
       //
-    })
+    // })
+    this.logo = window.site.logo;
+    this.name = window.site.name;
   },
   data(){
     return{

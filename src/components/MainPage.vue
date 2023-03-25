@@ -19,13 +19,14 @@
         }
       },
       created(){
-        fetch("/get/site",{
-          method:"post",
-        }).then(res=>res.json()).then(data=>{
-          data.name
-          // noinspection JSUnresolvedVariable
-          this.style.backgroundColor = data.mainColor;
-        })
+        // fetch("/get/site",{
+        //   method:"post",
+        // }).then(res=>res.json()).then(data=>{
+        //   data.name
+        //   noinspection JSUnresolvedVariable
+          // this.style.backgroundColor = data.mainColor;
+        // })
+        this.style.backgroundColor = window.site.mainColor;
       },
       methods:{
         goMake(){

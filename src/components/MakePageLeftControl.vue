@@ -45,9 +45,10 @@ export default {
     }
   },
   created() {
-    fetch("/get/site",{method:"post"}).then(res=>res.json()).then(data=>{
-      this.style = data.mainColor;
-    })
+    // fetch("/get/site",{method:"post"}).then(res=>res.json()).then(data=>{
+    //   this.style = data.mainColor;
+    // })
+    this.style.backgroundColor = window.site.mainColor
   }
   ,
   methods: {
