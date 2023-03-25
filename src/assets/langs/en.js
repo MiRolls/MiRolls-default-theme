@@ -1,7 +1,6 @@
 const en = {
     pageNotFoundTitle:"404 Not Found",
     pageMakeTitle:"Make Questionnaire",
-    pageMainTitle:"",
     pageSearchTitle:"Query",
     pageQueryBigData:"BigDataOverview",
     pageQueryDetails:"Details",

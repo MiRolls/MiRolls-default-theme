@@ -1,7 +1,6 @@
 const zh = {
     pageNotFoundTitle: "404",
     pageMakeTitle: "创建问卷",
-    pageMainTitle: "",
     pageSearchTitle: "查询问卷",
     pageQueryBigData: "大数据概览",
     pageQueryDetails: "明细",
