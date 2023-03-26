@@ -17,10 +17,7 @@ window.iForReq = false
 window.req("test")
 
 let inv = setInterval(() => {
-    console.log("asd1")
-
     if (window.iForReq) {
-        console.log("asd")
         clearInterval(inv)
         const i18n = new createI18n({
             locale: window.site.lang,
