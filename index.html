@@ -9,10 +9,9 @@
 <body>
 <div id="app"></div>
 <!--suppress HtmlUnknownTarget -->
-<script type="module" src="/src/main.js"></script>
 <script>
     function request(mode) {
-        if (mode === "test"){
+        if (mode === "test") {
             let site = {
                 message: "success",
                 name: "米卷",
@@ -24,11 +23,15 @@
                 needIcp: 0
             }
             // site = {}
-            document.getElementById("favicon").href = site.logo;
-            document.documentElement.lang = site.lang;
-            window.site = site;
-            document.getElementById("titleForIndex").innerHTML = site.name;
-        }else{
+            setTimeout(() => {
+                document.getElementById("favicon").href = site.logo;
+                document.documentElement.lang = site.lang;
+                window.site = site;
+                document.getElementById("titleForIndex").innerHTML = site.name;
+                window.iForReq = true
+            }, 500)
+            //simulation ping value
+        } else {
             fetch("/get/site", {
                 method: "POST"
             }).then(res => res.json()).then(site => {
@@ -36,10 +39,13 @@
                 document.documentElement.lang = site.lang;
                 window.site = site;
                 document.getElementById("titleForIndex").innerHTML = site.name;
+                window.iForReq = true
             })
+
         }
     }
-    request("test")
+    window.req = request
 </script>
+<script type="module" src="/src/main.js"></script>
 </body>
 </html>
