@@ -1,8 +1,8 @@
 <template>
   <div class="footer" :style="{marginTop:margin}">
     <h1>{{ name }}</h1>
-    <p class="footerButton" v-if="icpBoolean">{{ $t("footerInt") }}</p>
-    <p class="footerButton" :style="icpStyle" @click="goIcp">{{ icp }}</p>
+    <p class="footerButton">{{ $t("footerInt") }}</p>
+    <p class="footerButton" :style="icpStyle" v-if="icpBoolean" @click="goIcp">{{ icp }}</p>
   </div>
 </template>
 <script>
@@ -22,7 +22,7 @@ export default {
     return {
       name: "",
       icp: "",
-      icpBoolean: false,
+      icpBoolean: Boolean,
       icpStyle: {}
     }
   },
