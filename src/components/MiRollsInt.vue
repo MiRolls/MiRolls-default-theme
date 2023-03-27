@@ -38,5 +38,6 @@ export default {
 .IntOfImage{
   max-width: 60%;
   height: 300px;
+  margin-bottom: 3em;
 }
 </style>

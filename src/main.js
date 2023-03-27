@@ -12,7 +12,6 @@ import QueryPage from "./pages/QueryBigData.vue";
 import QueryDetails from "./pages/QueryDetails.vue";
 import NotFound from "./pages/NotFound.vue";
 
-window.request("test")
 window.iForReq = false
 window.req("test")
 
