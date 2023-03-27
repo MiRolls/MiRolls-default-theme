@@ -40,5 +40,6 @@ const zh = {
     queryBigDataOverview: "大数据概览",
     queryDetails: " 问卷明细",
     enterYourQueryCode: "输入你的查询码",
+    answerError: "无法获取问卷"
 }
 export default zh;

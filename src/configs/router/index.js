@@ -6,7 +6,8 @@ const SearchPage = () => import("../../pages/SearchPage.vue")
 const QueryPage = () => import("../../pages/QueryBigData.vue")
 const QueryDetails = () => import("../../pages/QueryDetails.vue")
 const NotFound = () => import("../../pages/NotFound.vue")
-const langList = () => import("../../../langList")
+import langList from "../../../langList";
+import AnswerPage from "../../pages/AnswerPage.vue";
 
 export const getRouter = (site) => {
     const router = createRouter({
@@ -46,7 +47,9 @@ export const getRouter = (site) => {
                 title: site.name + " | " + getI18n(site.lang, "pageNotFoundTitle")
             },
         }, {
-            path: "/answer/:link"
+            path: "/answer/:link",
+            component:AnswerPage,
+            meta:{}
         }]
     });
     router.beforeEach((to, from, next) => {//beforeEach是router的钩子函数，在进入路由前执行
