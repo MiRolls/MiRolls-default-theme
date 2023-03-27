@@ -1,14 +1,14 @@
 import {createRouter, createWebHistory} from "vue-router";
-import MakePage from "../pages/MakePage.vue";
-import IndexPage from "../pages/IndexPage.vue";
-import SearchPage from "../pages/SearchPage.vue";
-import QueryPage from "../pages/QueryBigData.vue";
-import QueryDetails from "../pages/QueryDetails.vue";
-import NotFound from "../pages/NotFound.vue";
-import langList from "../../langList";
+import MakePage from "../../pages/MakePage.vue";
+import IndexPage from "../../pages/IndexPage.vue";
+import SearchPage from "../../pages/SearchPage.vue";
+import QueryPage from "../../pages/QueryBigData.vue";
+import QueryDetails from "../../pages/QueryDetails.vue";
+import NotFound from "../../pages/NotFound.vue";
+import langList from "../../../langList";
 
 export const getRouter = (site)=>{
-    return createRouter({
+    const router = createRouter({
         // history:createWebHashHistory(),
         history: createWebHistory(),
         routes: [{
@@ -45,7 +45,14 @@ export const getRouter = (site)=>{
                 title: site.name + " | " + getI18n(site.lang, "pageNotFoundTitle")
             },
         }]
-    })
+    });
+    router.beforeEach((to, from, next) => {//beforeEach是router的钩子函数，在进入路由前执行
+        if (to.meta.title) {
+            document.title = to.meta.title
+        }
+        next()
+    });
+    return router;
 }
 
 function getI18n(lang,title) {
