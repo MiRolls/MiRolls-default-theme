@@ -39,7 +39,7 @@ export default {
           // if success
           console.log("success",data)
           // noinspection JSUnresolvedVariable
-          this.message = this.$t('messageUpdateSuccess') + `${data.rollCode}, ${this.$t("messageUpdateSuccess2")} ${this.siteLink}${data.rollLink} ${this.$t("messageUpdateSuccess3")}`
+          this.message = this.$t('messageUpdateSuccess') + `${data.rollCode}, ${this.$t("messageUpdateSuccess2")} ${this.siteLink}/answer/${data.rollLink} ${this.$t("messageUpdateSuccess3")}`
         }else {
           // if error
           // noinspection JSUnresolvedVariable
