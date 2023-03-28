@@ -26,12 +26,12 @@
 <!--suppress JSUnresolvedVariable -->
 <script>
 export default {
-  name:"RollsPage",
-  data(){
-    return{
-      rolls:{
+  name: "RollsPage",
+  data() {
+    return {
+      rolls: {
         title: this.$t("makeTitleNormal"),
-        quest:[
+        quest: [
           {
             type: "radio",//或者multipleChoice(多选) / blank(单行填空) manyBlank(多行填空)
             //如果是radio，或者choice，要填写选项数量
@@ -48,18 +48,18 @@ export default {
       },
     }
   },
-  props:{
-    title:String
+  props: {
+    title: String
   },
-  watch:{
-    title(nv){
+  watch: {
+    title(nv) {
       this.rolls.title = nv;
     }
   },
   mounted() {
-    if(this.$route.query.draft !== undefined){
+    if (this.$route.query.draft !== undefined) {
       // use the import data
-      this.rolls =  JSON.parse(this.$route.query.draft);
+      this.rolls = JSON.parse(this.$route.query.draft);
     }
   },
   methods: {
@@ -75,7 +75,7 @@ export default {
       // delete the quest
       // this.$delete(this.rolls.quest, index)
       // this.rolls.quest.splice(index,1)
-      this.rolls.quest.splice(index,1)
+      this.rolls.quest.splice(index, 1)
     },
     addQuestValue(type, optionsNumber) {
       let quest;
@@ -106,20 +106,20 @@ export default {
       if (this.$cookies.isKey("draft")) {
         let oldData = this.$cookies.get("draft");
         oldData.data[oldData.data.length] = this.rolls;
-        try{
+        try {
           this.$cookies.set('draft', JSON.stringify(oldData));
-        }catch (err){
-          return [false,err]
+        } catch (err) {
+          return [false, err]
         }
-        return [true,null]
+        return [true, null]
         //get after this
       } else {
-        try{
+        try {
           this.$cookies.set('draft', JSON.stringify({data: [this.rolls]}));
-        }catch (err){
-          return [false,err]
+        } catch (err) {
+          return [false, err]
         }
-        return [true,null]
+        return [true, null]
       }
     }
   }
