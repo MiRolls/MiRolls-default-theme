@@ -42,4 +42,5 @@ const zh = {
     enterYourQueryCode: "输入你的查询码",
     answerError: "无法获取问卷"
 }
+
 export default zh;
