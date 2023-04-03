@@ -10,41 +10,7 @@
 <div id="app"></div>
 <!--suppress HtmlUnknownTarget -->
 <script>
-    function request(mode) {
-        if (mode === "test") {
-            let site = {
-                message: "success",
-                name: "米卷",
-                link: "https://localhost:3000/",
-                logo: "/favicon.png",
-                mainColor: "rgb(21, 127, 248)",
-                icp: "A nice questionnaire system",
-                lang: "zh",
-                needIcp: 0
-            }
-            // site = {}
-            setTimeout(() => {
-                document.getElementById("favicon").href = site.logo;
-                document.documentElement.lang = site.lang;
-                window.site = site;
-                document.getElementById("titleForIndex").innerHTML = site.name;
-                window.iForReq = true
-            }, 500)
-            //simulation ping value
-        } else {
-            fetch("/get/site", {
-                method: "POST"
-            }).then(res => res.json()).then(site => {
-                document.getElementById("favicon").href = site.logo;
-                document.documentElement.lang = site.lang;
-                window.site = site;
-                document.getElementById("titleForIndex").innerHTML = site.name;
-                window.iForReq = true
-            })
 
-        }
-    }
-    window.req = request
 </script>
 <script type="module" src="/src/main.js"></script>
 </body>
