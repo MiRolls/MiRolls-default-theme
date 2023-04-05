@@ -16,11 +16,13 @@ export default {
     components: {AnswerQuestions},
     props: {
         roll: {},
+        link: String
     },
     mounted() {
         if (this.roll !== undefined && this.roll !== null) {
             this.rollData = this.roll
         }
+        this.transformAnswer()
     },
     data() {
         return {
@@ -41,9 +43,18 @@ export default {
                     }
                 ],
             },
-            answer:{
-              code:""
+            answer: {
+                link: this.link,
+                answer: []
             }
+        }
+    },
+    methods: {
+        transformAnswer() {
+            for (let numberOfAnswer = 0; numberOfAnswer < this.rollData.quest.length; numberOfAnswer++) {
+
+            }
+            console.log(this.answer, this.rollData)
         }
     }
 }
@@ -55,7 +66,7 @@ export default {
     width: 85%;
     border-radius: 20px;
     padding: 30px;
-    margin: 100px auto 30px;
+    margin: 100px auto 41px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.24);
     display: flex;
     flex-direction: column;

@@ -4,8 +4,9 @@ import './index.css'
 import VueCookies from 'vue-cookies'
 import {getRouter} from "./configs/router";
 import {getI18n} from "./configs/i18n";
+import modes from "./configs/mode";
 
-request("test",()=>{
+request(modes.test, () => {
     const i18n = getI18n(window.site)
     const router = getRouter(window.site)
 
@@ -16,8 +17,9 @@ request("test",()=>{
     app.mount('#app');
 })
 
-function request(mode,callback) {
-    if (mode === "test") {
+function request(mode, callback) {
+    window.runmod = mode
+    if (mode === modes.test) {
         let site = {
             message: "success",
             name: "米卷",
@@ -40,7 +42,8 @@ function request(mode,callback) {
             siteChanger(site)
         })
     }
-    function siteChanger(site){
+
+    function siteChanger(site) {
         document.getElementById("favicon").href = site.logo;
         document.documentElement.lang = site.lang;
         window.site = site;
