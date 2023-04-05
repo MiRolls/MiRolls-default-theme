@@ -2,8 +2,8 @@
     <div id="answerPage">
         <message v-if="roll.title" :message="roll.title" height="100px"/>
         <app-bar/>
-        <answer-main :roll="roll" :link="$route.params.link" v-if="mode !== mode.test"/>
-        <answer-main :link="$route.params.link" v-if="mode === mode.test"/>
+<!--        <answer-main :roll="roll" :link="$route.params.link"/>-->
+        <answer-main :link="$route.params.link"/>
         <page-footer/>
     </div>
 </template>
@@ -25,7 +25,7 @@ export default {
             mode: window.runmod
         }
     },
-    mounted() {
+    created() {
         axios.post("/get/roll", JSON.stringify({
             link: this.$route.params.link
         })).then(data => {
