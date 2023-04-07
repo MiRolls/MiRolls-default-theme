@@ -10,7 +10,7 @@
     </div>
 </template>
 <script>
-  import titleBtn from "./titleBtn.vue";
+  import titleBtn from "./TitleBtn.vue";
   import LoginOrRegister from "./LoginOrRegister.vue"
   import {useRouter} from "vue-router";
   export default {
