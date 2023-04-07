@@ -1,10 +1,41 @@
 {
-  "message": "success",
-  "name": "米卷",
-  "link": "https://localhost:3000/",
-  "logo": "/favicon.png",
-  "mainColor": "rgb(21, 127, 248)",
-  "icp": "A nice questionnaire system",
-  "lang": "zh",
-  "needIcp": 0
+  "data1": {
+    "message": "success",
+    "name": "米卷",
+    "link": "https://localhost:3000/",
+    "logo": "/favicon.png",
+    "mainColor": "rgb(21, 127, 248)",
+    "icp": "A nice questionnaire system",
+    "lang": "zh",
+    "needIcp": 0
+  },
+  "data2": {
+    "link": "shabi",
+    "answer": [
+      {
+        "title": "问题标题",
+        "type": "radio",
+        "answer": [
+          false,
+          false,
+          false
+        ]
+      }
+    ]
+  },
+  "data3": {
+    "title": "这是一张新的问卷",
+    "quest": [
+      {
+        "type": "radio",
+        "optionsNumber": 3,
+        "title": "问题标题",
+        "options": [
+          "选项 1",
+          "选项 2",
+          "选项 3"
+        ]
+      }
+    ]
+  }
 }

@@ -52,8 +52,10 @@ export default {
     methods: {
         transformAnswer() {
             for (let numberOfAnswer = 0; numberOfAnswer < this.rollData.quest.length; numberOfAnswer++) {
-                this.answer.answer[numberOfAnswer].title = this.rollData.quest[numberOfAnswer].title;
-                this.answer.answer[numberOfAnswer].type = this.rollData.quest[numberOfAnswer].type;
+                this.answer.answer[numberOfAnswer] = {
+                    title: this.rollData.quest[numberOfAnswer].title,
+                    type: this.rollData.quest[numberOfAnswer].type,
+                }
                 if (this.rollData.quest[numberOfAnswer].type === "radio" || this.rollData.quest[numberOfAnswer].type === "multipleChoice") {
                     this.answer.answer[numberOfAnswer].answer = [];
                     for (let numberOfOptions = 0; numberOfOptions < this.rollData.quest[numberOfAnswer].optionsNumber; numberOfOptions++) {
@@ -63,7 +65,7 @@ export default {
                     this.answer.answer[numberOfAnswer].answer = [""];
                 }
             }
-            console.log(this.answer, this.rollData)
+            console.log(JSON.stringify(this.answer), "//////",JSON.stringify(this.rollData));
         }
     }
 }
