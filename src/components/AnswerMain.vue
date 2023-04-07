@@ -65,7 +65,6 @@ export default {
                     this.answer.answer[numberOfAnswer].answer = [""];
                 }
             }
-            console.log(JSON.stringify(this.answer), "//////",JSON.stringify(this.rollData));
         }
     }
 }
