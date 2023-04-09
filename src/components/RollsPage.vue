@@ -1,6 +1,6 @@
 <template>
   <div id="rollsPage">
-    <h2 class="TitleRollsT">{{ title }}</h2>
+    <h2 class="TitleRollsT">{{ rolls.title }}</h2>
     <div class="topic" v-for="(item,index) in rolls.quest" :key="index">
       <span>{{ index + 1 }}.  </span>
       <input class="questTitle" :placeholder="$t('makeQuestBlankTitleNormal')" type="text"
