@@ -44,16 +44,10 @@ export default {
                         ]
                     },
                     {
-                        type: "multipleChoice",//或者multipleChoice(多选) / blank(单行填空) manyBlank(多行填空)
+                        type: "blank",//或者multipleChoice(多选) / blank(单行填空) manyBlank(多行填空)
                         //如果是radio，或者choice，要填写选项数量
-                        optionsNumber: 3,//选项数量，如果是blank就不用加
-                        // placeholder: 就是选项相关的提示(placeholder) 如果是选择题就不用加
+                        placeholder: "haha",
                         title: this.$t("makeQuestTitleNormal"),//题目的标题
-                        options: [ // 填空题不用加
-                            this.$t("makeOptions") + "1",
-                            this.$t("makeOptions") + "2",
-                            this.$t("makeOptions") + "3"
-                        ]
                     }
                 ],
             },

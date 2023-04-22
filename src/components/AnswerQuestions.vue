@@ -3,11 +3,13 @@
         <span class="questionTitle">{{ indexFor + 1 }}. {{ quest.title }}</span>
         <span class="questionType">{{ getType() }}</span>
         <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">
-            <div class="options" v-for="(title,index) of quest.options" :key="index + title">
-                <div :class="'changeCircle'" :style="answer[index] ? {backgroundColor:mainColor} : {}"
-                     @click="select(index)"/>
+            <div class="options" v-for="(title,index) of quest.options" :key="index + title" @click="select(index)">
+                <div :class="'changeCircle'" :style="answer[index] ? {backgroundColor:mainColor} : {}"/>
                 <span>{{ title }}</span>
             </div>
+        </div>
+        <div v-if="quest.type === 'blank' || quest.type === 'manyBlank'">
+
         </div>
     </div>
 </template>
