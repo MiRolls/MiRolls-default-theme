@@ -2,9 +2,10 @@
     <div class="answerBar">
         <span class="questionTitle">{{ indexFor + 1 }}. {{ quest.title }}</span>
         <span class="questionType">{{ getType() }}</span>
-        <div>
+        <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">
             <div class="options" v-for="(title,index) of quest.options" :key="index + title">
-                <div :class="'changeCircle'" :style="answer[index] ? {} : {backgroundColor:mainColor}" @click="select(index)"/>
+                <div :class="'changeCircle'" :style="answer[index] ? {backgroundColor:mainColor} : {}"
+                     @click="select(index)"/>
                 <span>{{ title }}</span>
             </div>
         </div>
@@ -30,15 +31,11 @@ export default {
         },
         select(index) {
             //分为两种情况
-            if (this.quest[index].type === "radio") {//单选题情况
+            if (this.quest.type === "radio") {//单选题情况
                 this.answer.fill(false);
                 this.answer[index] = true
             } else {//多选题情况
-                if (this.answer[index] === true) {//取消选择
-                    this.answer[index] = false
-                } else {//勾选
-                    this.answer[index] = true
-                }
+                this.answer[index] = this.answer[index] !== true;
             }
         },
         getType() {
