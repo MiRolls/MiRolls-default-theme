@@ -40,7 +40,10 @@ const en = {
     queryBigDataOverview: "Big data overview",
     queryDetails: " Answer details",
     enterYourQueryCode: "Enter your query code",
-    answerError: "Can't get questionnaire."
+    answerError: "Can't get questionnaire.",
+    singleChoice: " [Single choice]",
+    multipleChoice: " [Multiple choice]",
+    fillInTheBlank: " [Fill in the blank]",
 }
 
 export default en;

@@ -3,13 +3,15 @@
     <div style="width: 100%;" id="background">
         <div id="mainAnswer">
             <h1>{{ rollData.title }}</h1>
-            <answer-questions v-for="(index,quest) in rollData" :quest="quest" :indexFor="index"/>
+            <answer-questions v-for="(quest,index) in rollData.quest" :quest="quest" :indexFor="index"
+                              :key="quest+index"/>
         </div>
     </div>
 </template>
 
 <script>
 import AnswerQuestions from "./AnswerQuestions.vue";
+import mode from "../configs/mode";
 
 export default {
     name: "AnswerMain",
@@ -63,6 +65,9 @@ export default {
                     }
                 } else {
                     this.answer.answer[numberOfAnswer].answer = [""];
+                }
+                if (window.runmod === mode.test) {
+                    console.log(this.answer, "---|||data|||---", this.rollData)
                 }
             }
         }
