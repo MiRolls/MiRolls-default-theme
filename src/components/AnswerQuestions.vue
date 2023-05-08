@@ -1,10 +1,10 @@
 <template>
-    <div class="answerBar">
+    <div class="answerBar" :style="indexFor === 0 ? {borderTop:'#171b21 solid 1px'} : {}">
         <span class="questionTitle">{{ indexFor + 1 }}. {{ quest.title }}</span>
         <span class="questionType">{{ getType() }}</span>
         <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">
             <div class="options" v-for="(title,index) of quest.options" :key="index + title" @click="select(index)">
-                <div :class="'changeCircle'" :style="answer[index] ? {backgroundColor:mainColor} : {}"/>
+                <div :class="'changeCircle'" :style="answer[index] ? this.beChoose : {}"/>
                 <span>{{ title }}</span>
             </div>
         </div>
@@ -15,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
     name: "AnswerQuestions",
     props: {
@@ -24,8 +25,16 @@ export default {
     data() {
         return {
             answer: [],
-            mainColor: window.site.mainColor
+            mainColor: window.site.mainColor,
+            beChoose: {
+                backgroundColor: window.site.mainColor,
+                border: `solid ${window.site.mainColor} 1px`,
+            }
         }
+    },
+    mounted() {
+        // console.log(this.indexFor === 0)
+        console.log(this.indexFor === 0 ? {borderTop: 'border-top: #171b21 solid 1px;'} : {})
     },
     methods: {
         getAnswer() {
@@ -56,9 +65,7 @@ export default {
 <style scoped>
 .answerBar {
     border-bottom: #171b21 solid 1px;
-    border-top: #171b21 solid 1px;
-    padding: 15px 20px;
-    width: 100%;
+//border-top: #171b21 solid 1px; padding: 15px 20px; width: 100%;
 }
 
 .questionType {
@@ -78,10 +85,23 @@ span {
 .changeCircle {
     border: solid black 1px;
     border-radius: 2em;
-    width: 12px;
-    height: 12px;
+    width: 8px;
+    height: 8px;
+    padding: 2px;
     float: left;
     margin-top: 4px;
     margin-right: 6px;
+//background-color: #b60000;
+}
+
+.changeCircle::after {
+    border: white solid;
+    border-radius: 100em;
+    width: 7px;
+    height: 7px;
+    content: "";
+    margin-top: -1px;
+    margin-left: -1px;
+    display: block;
 }
 </style>
