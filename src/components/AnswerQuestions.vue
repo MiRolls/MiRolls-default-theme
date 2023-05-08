@@ -8,8 +8,13 @@
                 <span>{{ title }}</span>
             </div>
         </div>
-        <div v-if="quest.type === 'blank' || quest.type === 'manyBlank'">
-
+        <div v-if="quest.type === 'blank'">
+            <input type="text" :placeholder="quest.placeholder">
+        </div>
+        <!--        <div v-if="quest.type === 'manyBlank'">-->
+        <div v-if="quest.type === 'blank'">
+            <textarea class="manyBlank" :placeholder="quest.placeholder"
+                      @change="event=>{answer[0] = event.currentTarget.value}"></textarea>
         </div>
     </div>
 </template>
@@ -31,10 +36,6 @@ export default {
                 border: `solid ${window.site.mainColor} 1px`,
             }
         }
-    },
-    mounted() {
-        // console.log(this.indexFor === 0)
-        console.log(this.indexFor === 0 ? {borderTop: 'border-top: #171b21 solid 1px;'} : {})
     },
     methods: {
         getAnswer() {
@@ -103,5 +104,16 @@ span {
     margin-top: -1px;
     margin-left: -1px;
     display: block;
+}
+
+.manyBlank {
+    font-size: 16px;
+    outline: none;
+    width: 80%;
+    height: 100px;
+    border-radius: 10px;
+    border: none;
+    resize: none;
+    padding: 0.5em;
 }
 </style>
