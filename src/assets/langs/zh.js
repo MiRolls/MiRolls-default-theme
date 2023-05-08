@@ -44,6 +44,7 @@ const zh = {
     singleChoice: " [单选]",
     multipleChoice: " [多选]",
     fillInTheBlank: " [填空]",
+    confirm: "请确认所有题目是否填空完毕，确保所有题目是否检查无误后提交",
 }
 
 export default zh;

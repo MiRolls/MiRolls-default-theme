@@ -44,6 +44,7 @@ const en = {
     singleChoice: " [Single choice]",
     multipleChoice: " [Multiple choice]",
     fillInTheBlank: " [Fill in the blank]",
+    confirm: "Please confirm all question finished answering, and confirm all question are correct",
 }
 
 export default en;
