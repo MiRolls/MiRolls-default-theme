@@ -11,8 +11,8 @@
         <div v-if="quest.type === 'blank'">
             <input type="text" :placeholder="quest.placeholder">
         </div>
-        <!--        <div v-if="quest.type === 'manyBlank'">-->
-        <div v-if="quest.type === 'blank'">
+                <div v-if="quest.type === 'manyBlank'">
+<!--        <div v-if="quest.type === 'blank'">-->
             <textarea class="manyBlank" :placeholder="quest.placeholder"
                       @change="event=>{answer[0] = event.currentTarget.value}"></textarea>
         </div>
@@ -112,8 +112,21 @@ span {
     width: 80%;
     height: 100px;
     border-radius: 10px;
-    border: none;
+    border: #dddddd solid;
     resize: none;
     padding: 0.5em;
+    margin-left: 10px;
+}
+
+input[type=text]{
+    border: none;
+    font-size: 16px;
+    width: 50%;
+    margin-top: 5px;
+    border-bottom: black solid;
+    padding: 4px 4px 0;
+    outline: none;
+    height: 20px;
+    margin-left: 10px;
 }
 </style>
