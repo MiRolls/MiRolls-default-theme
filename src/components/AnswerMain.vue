@@ -1,21 +1,26 @@
 <template>
   <!--  <div style="width: 100%;height: 100vh;" id="background"> -->
+    <dialog-box :show="show">{{$t("noComplete")}}</dialog-box>
     <div style="width: 100%;" id="background">
         <div id="mainAnswer">
             <h1>{{ rollData.title }}</h1>
             <answer-questions v-for="(quest,index) in rollData.quest" :quest="quest" :indexFor="index"
                               :key="quest+index" :ref="el => answersRef.push(el)"/>
+            <button @click="submit">test</button>
+
         </div>
     </div>
 </template>
 
 <script>
 import AnswerQuestions from "./AnswerQuestions.vue";
+import axios from "axios";
+import DialogBox from "./DialogBox.vue";
 // import mode from "../configs/mode";
 
 export default {
     name: "AnswerMain",
-    components: {AnswerQuestions},
+    components: {DialogBox, AnswerQuestions},
     props: {
         roll: {},
         link: String
@@ -28,9 +33,27 @@ export default {
     },
     data() {
         return {
+            show:"",
             rollData: {
                 title: this.$t("makeTitleNormal"),
-                quest: [],
+                quest: [{
+                    type: "radio",
+                    optionsNumber: 3, //选择题特有的选项
+                    title: "问题题目",
+                    options: [
+                        // 一个数组。应该遵循与optionsNumber
+                        "选项1",
+                        "选项2",
+                        "选项3"
+                    ]
+                },
+                    //填空题
+                    {
+                        type: "blank",
+                        placeholder: "题目的提示",
+                        title: "问题的题目"
+                    }
+                ]
             },
             answersRef: [],
             answer: {
@@ -40,10 +63,37 @@ export default {
         }
     },
     methods: {
-        gettingAnswer() {
-            this.answersRef.forEach(answer => {
-                this.answer.answer.push(answer.getAnswer())
+        submit() {
+            this.getTheAnswer(true);
+            // change this.answer
+            axios.post("answer", this.answer).then(res => {
+
+            }).catch(e => {
+
             })
+        },
+        getTheAnswer(check) {
+            this.answer.answer = [];
+            this.answersRef.forEach(answer => {
+                // console.log(answer)
+                this.answer.answer.push(answer.getAnswer())
+                console.log(answer.getAnswer());
+            });
+            if (check){
+                if(!doCheck()){
+                    this.show = this.show + "hhh"
+                }
+            }
+
+            function doCheck() {
+                this.answer.answer.forEach(array => {
+                    if (array.length === 0){
+                        return false
+                    }
+                })
+                return true
+            }
+
         }
     }
 }

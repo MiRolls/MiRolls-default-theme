@@ -2,19 +2,20 @@
     <div class="answerBar" :style="indexFor === 0 ? {borderTop:'#171b21 solid 1px'} : {}">
         <span class="questionTitle">{{ indexFor + 1 }}. {{ quest.title }}</span>
         <span class="questionType">{{ getType() }}</span>
-        <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">
+        <!--        <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">-->
+        <div v-if="quest.type === 'radio' || quest.type === 'multipleChoice'" class="sbsbsb">
             <div class="options" v-for="(title,index) of quest.options" :key="index + title" @click="select(index)">
                 <div :class="'changeCircle'" :style="answer[index] ? this.beChoose : {}"/>
                 <span>{{ title }}</span>
             </div>
         </div>
         <div v-if="quest.type === 'blank'">
-            <input type="text" :placeholder="quest.placeholder">
+            <input type="text" :placeholder="quest.placeholder" @change="onInput">
         </div>
-                <div v-if="quest.type === 'manyBlank'">
-<!--        <div v-if="quest.type === 'blank'">-->
+        <div v-if="quest.type === 'manyBlank'">
+            <!--        <div v-if="quest.type === 'blank'">-->
             <textarea class="manyBlank" :placeholder="quest.placeholder"
-                      @change="event=>{answer[0] = event.currentTarget.value}"></textarea>
+                      @change="onInput"/>
         </div>
     </div>
 </template>
@@ -37,11 +38,17 @@ export default {
             }
         }
     },
+    mounted() {
+    },
     methods: {
         getAnswer() {
             return this.answer
         },
+        onInput(event) {
+            this.answer[0] = event.target.value
+        },
         select(index) {
+            this.answer.length = this.quest.options.length;
             //分为两种情况
             if (this.quest.type === "radio") {//单选题情况
                 this.answer.fill(false);
@@ -118,7 +125,7 @@ span {
     margin-left: 10px;
 }
 
-input[type=text]{
+input[type=text] {
     border: none;
     font-size: 16px;
     width: 50%;
