@@ -1,9 +1,9 @@
 <template>
-    <div class="answerBar" :style="indexFor === 0 ? {borderTop:'#171b21 solid 1px'} : {}">
+    <div class="answerBar" :style="indexFor === 0 ? {borderTop:'#171b21 solid 1px'} : {}" >
         <span class="questionTitle">{{ indexFor + 1 }}. {{ quest.title }}</span>
         <span class="questionType">{{ getType() }}</span>
         <!--        <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">-->
-        <div v-if="quest.type === 'radio' || quest.type === 'multipleChoice'" class="sbsbsb">
+        <div v-if="quest.type === 'radio' || quest.type === 'multipleChoice'">
             <div class="options" v-for="(title,index) of quest.options" :key="index + title" @click="select(index)">
                 <div :class="'changeCircle'" :style="answer[index] ? this.beChoose : {}"/>
                 <span>{{ title }}</span>

@@ -64,13 +64,15 @@ export default {
     },
     methods: {
         submit() {
-            this.getTheAnswer(true);
+            // console.log(111)
+            this.show = this.show + "1"
+            // this.getTheAnswer(true);
             // change this.answer
-            axios.post("answer", this.answer).then(res => {
-
-            }).catch(e => {
-
-            })
+            // axios.post("answer", this.answer).then(res => {
+            //
+            // }).catch(e => {
+            //
+            // })
         },
         getTheAnswer(check) {
             this.answer.answer = [];
