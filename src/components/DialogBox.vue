@@ -28,6 +28,7 @@ export default {
     },
     watch: {
         show() {
+            this.showBg = true;
             this.style.opacity = 1
             this.hide()
         }
@@ -40,7 +41,7 @@ export default {
                     this.showBg = false
                 }, 500)
             }, 1500)
-        }
+        },
     }
 }
 </script>

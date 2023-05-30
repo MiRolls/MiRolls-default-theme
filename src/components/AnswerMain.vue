@@ -74,7 +74,7 @@ export default {
             //
             // })
         },
-        getTheAnswer(check) {
+        getTheAnswers(check) {
             this.answer.answer = [];
             this.answersRef.forEach(answer => {
                 // console.log(answer)
