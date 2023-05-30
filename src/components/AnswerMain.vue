@@ -65,8 +65,8 @@ export default {
     methods: {
         submit() {
             // console.log(111)
-            this.show = this.show + "1"
-            // this.getTheAnswer(true);
+            // this.show = this.show + "1"
+            this.getTheAnswers(true);
             // change this.answer
             // axios.post("answer", this.answer).then(res => {
             //
@@ -79,23 +79,22 @@ export default {
             this.answersRef.forEach(answer => {
                 // console.log(answer)
                 this.answer.answer.push(answer.getAnswer())
-                console.log(answer.getAnswer());
             });
+            let checkRes = this.doCheck()
             if (check){
-                if(!doCheck()){
+                if(!checkRes){
                     this.show = this.show + "hhh"
                 }
             }
-
-            function doCheck() {
-                this.answer.answer.forEach(array => {
-                    if (array.length === 0){
-                        return false
-                    }
-                })
-                return true
-            }
-
+        },
+        doCheck() {
+            let returnValue = true
+            this.answer.answer.forEach(array => {
+                if (array.length === 0){
+                    returnValue = false;
+                }
+            })
+            return returnValue
         }
     }
 }
