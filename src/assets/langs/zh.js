@@ -45,7 +45,9 @@ const zh = {
     multipleChoice: " [多选]",
     fillInTheBlank: " [填空]",
     confirm: "请确认所有题目是否填空完毕，确保所有题目是否检查无误后提交",
-    noComplete: "有题目未完成!"
+    noComplete: "有题目未完成!",
+    submit: "提交",
+    serverError: "服务器出现问题！请稍后再试！",
 }
 
 export default zh;

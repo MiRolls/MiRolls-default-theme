@@ -1,12 +1,12 @@
 <template>
-  <!--  <div style="width: 100%;height: 100vh;" id="background"> -->
-    <dialog-box :show="show">{{$t("noComplete")}}</dialog-box>
+    <!--  <div style="width: 100%;height: 100vh;" id="background"> -->
+    <dialog-box :show="show">{{ getDialogShowText() }}</dialog-box>
     <div style="width: 100%;" id="background">
         <div id="mainAnswer">
             <h1>{{ rollData.title }}</h1>
             <answer-questions v-for="(quest,index) in rollData.quest" :quest="quest" :indexFor="index"
                               :key="quest+index" :ref="el => answersRef.push(el)"/>
-            <button @click="submit">test</button>
+            <button class="submitButton" :style="getMainColor()" @click="submit">{{ $t("submit") }}</button>
 
         </div>
     </div>
@@ -14,8 +14,8 @@
 
 <script>
 import AnswerQuestions from "./AnswerQuestions.vue";
-import axios from "axios";
 import DialogBox from "./DialogBox.vue";
+import axios from "axios";
 // import mode from "../configs/mode";
 
 export default {
@@ -33,7 +33,7 @@ export default {
     },
     data() {
         return {
-            show:"",
+            show: "",
             rollData: {
                 title: this.$t("makeTitleNormal"),
                 quest: [{
@@ -59,20 +59,28 @@ export default {
             answer: {
                 link: this.link,
                 answer: []
-            }
+            },
+            NC: "noComplete"
         }
     },
     methods: {
+        getDialogShowText() {
+            return this.$t(this.NC)
+        },
+        getMainColor() {
+            return {backgroundColor: window.site.mainColor}
+        },
         submit() {
-            // console.log(111)
-            // this.show = this.show + "1"
             this.getTheAnswers(true);
-            // change this.answer
-            // axios.post("answer", this.answer).then(res => {
-            //
-            // }).catch(e => {
-            //
-            // })
+            axios.post("/answer", this.answer).then(res => {
+                if (res.data.message === "error"){
+                    this.show = this.show + "hhh";
+                    this.NC = "serverError"
+                }
+            }).catch(() => {
+                this.show = this.show + "hhh";
+                this.NC = "serverError"
+            })
         },
         getTheAnswers(check) {
             this.answer.answer = [];
@@ -81,8 +89,8 @@ export default {
                 this.answer.answer.push(answer.getAnswer())
             });
             let checkRes = this.doCheck()
-            if (check){
-                if(!checkRes){
+            if (check) {
+                if (!checkRes) {
                     this.show = this.show + "hhh"
                 }
             }
@@ -90,7 +98,7 @@ export default {
         doCheck() {
             let returnValue = true
             this.answer.answer.forEach(array => {
-                if (array.length === 0){
+                if (array.length === 0) {
                     returnValue = false;
                 }
             })
@@ -115,5 +123,16 @@ export default {
 
 h1 {
     font-size: 1.7em;
+}
+
+.submitButton {
+    height: 32px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    margin-top: 20px;
+    font-size: 16px;
+    width: 40%;
 }
 </style>
