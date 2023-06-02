@@ -47,7 +47,8 @@ const en = {
     confirm: "Please confirm all question finished answering, and confirm all question are correct",
     noComplete: "Some questions aren't completed",
     submit: "submit",
-    serverError: "The server was error, please wait a moment and try again"
+    serverError: "The server was error, please wait a moment and try again",
+    submitSuccess: "Submit success!"
 }
 
 export default en;

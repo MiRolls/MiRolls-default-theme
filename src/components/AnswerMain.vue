@@ -1,6 +1,6 @@
 <template>
     <!--  <div style="width: 100%;height: 100vh;" id="background"> -->
-    <dialog-box :show="show">{{ getDialogShowText() }}</dialog-box>
+    <dialog-box :show="show" :bg-color="dialogBg">{{ getDialogShowText() }}</dialog-box>
     <div style="width: 100%;" id="background">
         <div id="mainAnswer">
             <h1>{{ rollData.title }}</h1>
@@ -33,6 +33,7 @@ export default {
     },
     data() {
         return {
+            dialogBg: "#f62727",
             show: "",
             rollData: {
                 title: this.$t("makeTitleNormal"),
@@ -71,16 +72,24 @@ export default {
             return {backgroundColor: window.site.mainColor}
         },
         submit() {
-            this.getTheAnswers(true);
-            axios.post("/answer", this.answer).then(res => {
-                if (res.data.message === "error"){
+            if(this.getTheAnswers(true)){
+                axios.post("/answer", this.answer).then(res => {
+                    if (res.data.message === "error"){
+                        this.show = this.show + "hhh";
+                        this.NC = "serverError"
+                    }else{
+                        // submit success
+                        this.dialogBg = "rgb(38,157,106)"
+                        this.NC = "submitSuccess"
+                        setTimeout(()=>{
+                            this.$router.push("/")
+                        },3500)
+                    }
+                }).catch(() => {
                     this.show = this.show + "hhh";
                     this.NC = "serverError"
-                }
-            }).catch(() => {
-                this.show = this.show + "hhh";
-                this.NC = "serverError"
-            })
+                })
+            }
         },
         getTheAnswers(check) {
             this.answer.answer = [];
@@ -92,8 +101,10 @@ export default {
             if (check) {
                 if (!checkRes) {
                     this.show = this.show + "hhh"
+                    return false;
                 }
             }
+            return true
         },
         doCheck() {
             let returnValue = true

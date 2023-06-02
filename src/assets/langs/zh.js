@@ -48,6 +48,7 @@ const zh = {
     noComplete: "有题目未完成!",
     submit: "提交",
     serverError: "服务器出现问题！请稍后再试！",
+    submitSuccess:"提交成功！",
 }
 
 export default zh;

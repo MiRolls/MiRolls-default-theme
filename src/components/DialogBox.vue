@@ -1,6 +1,6 @@
 <template>
-    <div class="dialogBackground" :style="showBg ? {display: 'flex'}:{display:'none'}">
-        <div class="tips" :style="style">
+    <div class="dialogBackground"  :style="showBg ? {display: 'flex'}:{display:'none'}">
+        <div class="tips" :style="{opacity:style.opacity,backgroundColor:bgColor}">
             <svg class="img" role="img" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px"
                  viewBox="0 0 24 24"
                  aria-labelledby="infoIconTitle" stroke="white" stroke-width="2" stroke-linecap="round"
@@ -19,6 +19,7 @@ export default {
     name: "DialogBox",
     props: {
         show: "",
+        bgColor: "#f62727",
     },
     data() {
         return {
@@ -31,7 +32,7 @@ export default {
             this.showBg = true;
             this.style.opacity = 1
             this.hide()
-        }
+        },
     },
     methods: {
         hide() {
@@ -48,11 +49,10 @@ export default {
 
 <style scoped>
 .tips {
-    min-height: 50px;
-    background: rgba(182, 0, 0, 0.8);
-    border: #e01c1c solid 3px;
+    min-height: 35px;
+    background: #f62727;
     width: 330px;
-    padding: 0 20px;
+    padding: 5px 20px;
     position: fixed;
     display: flex;
     font-size: 16px;
