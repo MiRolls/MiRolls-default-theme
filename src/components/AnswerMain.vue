@@ -26,10 +26,7 @@ export default {
         link: String
     },
     mounted() {
-        if (this.roll !== undefined && this.roll !== null) {
-            this.rollData = this.roll
-        }
-        // this.transformAnswer()
+        console.log(this.roll)
     },
     data() {
         return {

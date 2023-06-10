@@ -1,12 +1,12 @@
 <template>
-    <div id="answerPage" v-if="find">
-<!--        <message v-if="roll.title" :message="roll.title" height="100px"/>-->
+    <div id="answerPage" v-if="find === 1">
+        <!--        <message v-if="roll.title" :message="roll.title" height="100px"/>-->
         <app-bar/>
         <!--        <answer-main :roll="roll" :link="$route.params.link"/>-->
         <answer-main :link="$route.params.link" :roll="roll"/>
         <page-footer/>
     </div>
-    <not-found v-if="!find"/>
+    <not-found v-if="find === 3"/>
 </template>
 
 <script>
@@ -15,8 +15,8 @@ import Message from "../components/Message.vue";
 import AppBar from "../components/AppBar.vue";
 import PageFooter from "../components/PageFooter.vue";
 import AnswerMain from "../components/AnswerMain.vue";
-import mode from "../configs/mode";
 import NotFound from "./NotFound.vue";
+import mode from "../configs/mode";
 
 export default {
     name: "AnswerPage",
@@ -26,7 +26,7 @@ export default {
             roll: {},
             mode: "release",
             // mode: "test",
-            find: false,
+            find: 0,
         }
     },
     created() {
@@ -34,36 +34,50 @@ export default {
             link: this.$route.params.link
         })).then(data => {
             if (data.data.message !== "error") {
+                console.log("request success")
                 //success
-                this.roll = data.data
+                this.roll = JSON.parse(data.data.roll);
                 document.title = data.data.title
-                this.find = true
+                this.find = 1
             } else {
-                this.find = false
+                this.find = 3
             }
         }).catch(err => {
-            console.log(111)
-            // if (this.mode !== mode.test) {
-            //     this.find = false
-            //     this.message = this.$t("answerError") + " " + err
-            // }
-            this.find = true
-            this.roll = {
-                "title": "这是一张新的问卷",
-                "quest": [
-                    {
-                        "type": "radio",
-                        "optionsNumber": 3,
-                        "title": "问题标题",
-                        "options": [
-                            "选项 1",
-                            "选项 2",
-                            "选项 3"
-                        ]
-                    }
-                ]
-            }
-
+            if (this.mode !== mode.test) {
+                this.find = 3
+                this.message = this.$t("answerError") + " " + err
+            } else {
+                setTimeout(() => {
+                    this.find = 1;
+                    this.roll = {
+                        title: "问卷标题",
+                        quest: [
+                            // ...一些题目
+                            //选择题
+                            {
+                                type: "radio",
+                                optionsNumber: 3, //选择题特有的选项
+                                title: "问题题目",
+                                options: [
+                                    // 一个数组。应该遵循与optionsNumber
+                                    "选项1",
+                                    "选项2",
+                                    "选项3"
+                                ]
+                            },
+                            //填空题
+                            {
+                                type: "blank",
+                                placeholder: "题目的提示",
+                                title: "问题的题目"
+                            }
+                            // 类型：multipleChoice 为多选，
+                            // blank 单行填空，
+                            // manyBlank 多行填空
+                        ],
+                    };
+                }, 500)
+            } //if not test mode
         })
     }
 }
