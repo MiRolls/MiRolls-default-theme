@@ -3,8 +3,8 @@
     <dialog-box :show="show" :bg-color="dialogBg">{{ getDialogShowText() }}</dialog-box>
     <div style="width: 100%;" id="background">
         <div id="mainAnswer">
-            <h1>{{ rollData.title }}</h1>
-            <answer-questions v-for="(quest,index) in rollData.quest" :quest="quest" :indexFor="index"
+            <h1>{{ roll.title }}</h1>
+            <answer-questions v-for="(quest,index) in roll.quest" :quest="quest" :indexFor="index"
                               :key="quest+index" :ref="el => answersRef.push(el)"/>
             <button class="submitButton" :style="getMainColor()" @click="submit">{{ $t("submit") }}</button>
 
@@ -35,27 +35,6 @@ export default {
         return {
             dialogBg: "#f62727",
             show: "",
-            rollData: {
-                title: this.$t("makeTitleNormal"),
-                quest: [{
-                    type: "radio",
-                    optionsNumber: 3, //选择题特有的选项
-                    title: "问题题目",
-                    options: [
-                        // 一个数组。应该遵循与optionsNumber
-                        "选项1",
-                        "选项2",
-                        "选项3"
-                    ]
-                },
-                    //填空题
-                    {
-                        type: "blank",
-                        placeholder: "题目的提示",
-                        title: "问题的题目"
-                    }
-                ]
-            },
             answersRef: [],
             answer: {
                 link: this.link,
