@@ -1,12 +1,12 @@
 <template>
     <div id="answerPage" v-if="find">
-        <message v-if="roll.title" :message="roll.title" height="100px"/>
+<!--        <message v-if="roll.title" :message="roll.title" height="100px"/>-->
         <app-bar/>
-<!--        <answer-main :roll="roll" :link="$route.params.link"/>-->
-        <answer-main :link="$route.params.link"/>
+        <!--        <answer-main :roll="roll" :link="$route.params.link"/>-->
+        <answer-main :link="$route.params.link" :roll="roll"/>
         <page-footer/>
     </div>
-    <not-found />
+    <not-found v-if="!find"/>
 </template>
 
 <script>
@@ -25,7 +25,8 @@ export default {
         return {
             roll: {},
             mode: "release",
-            find: true,
+            // mode: "test",
+            find: false,
         }
     },
     created() {
@@ -36,14 +37,33 @@ export default {
                 //success
                 this.roll = data.data
                 document.title = data.data.title
-            }else{
+                this.find = true
+            } else {
                 this.find = false
             }
         }).catch(err => {
-            if (this.mode !== mode.test) {
-                this.find = false
-                this.message = this.$t("answerError") + " " + err
+            console.log(111)
+            // if (this.mode !== mode.test) {
+            //     this.find = false
+            //     this.message = this.$t("answerError") + " " + err
+            // }
+            this.find = true
+            this.roll = {
+                "title": "这是一张新的问卷",
+                "quest": [
+                    {
+                        "type": "radio",
+                        "optionsNumber": 3,
+                        "title": "问题标题",
+                        "options": [
+                            "选项 1",
+                            "选项 2",
+                            "选项 3"
+                        ]
+                    }
+                ]
             }
+
         })
     }
 }

@@ -16,11 +16,8 @@
 
 <!--suppress JSUnresolvedFunction -->
 <script>
-import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-
 export default {
   name: "Message",
-  components: {FontAwesomeIcon},
   props: {
     message: String,
     height: Number,

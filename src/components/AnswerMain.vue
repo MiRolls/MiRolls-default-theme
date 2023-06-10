@@ -51,18 +51,19 @@ export default {
             return {backgroundColor: window.site.mainColor}
         },
         submit() {
-            if(this.getTheAnswers(true)){
-                axios.post("/answer", this.answer).then(res => {
-                    if (res.data.message === "error"){
+            if (this.getTheAnswers(true)) {
+                axios.post("/answer", {link: this.link, answer: this.answer}).then(res => {
+                    if (res.data.message === "error") {
                         this.show = this.show + "hhh";
                         this.NC = "serverError"
-                    }else{
+                    } else {
                         // submit success
                         this.dialogBg = "rgb(38,157,106)"
+                        this.show = this.show + "hhh";
                         this.NC = "submitSuccess"
-                        setTimeout(()=>{
+                        setTimeout(() => {
                             this.$router.push("/")
-                        },3500)
+                        }, 3500)
                     }
                 }).catch(() => {
                     this.show = this.show + "hhh";

@@ -6,7 +6,7 @@ import {getRouter} from "./configs/router";
 import {getI18n} from "./configs/i18n";
 import modes from "./configs/mode";
 
-request(modes.release, () => {
+request(modes.test, () => {
     const i18n = getI18n(window.site)
     const router = getRouter(window.site)
 
