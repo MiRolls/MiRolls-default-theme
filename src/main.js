@@ -6,7 +6,7 @@ import {getRouter} from "./configs/router";
 import {getI18n} from "./configs/i18n";
 import loadSite from "./configs/loadSite";
 
-loadSite("release", () => {
+loadSite("test", () => {
     const i18n = getI18n(window.site)
     const router = getRouter(window.site)
     const app = createApp(App);

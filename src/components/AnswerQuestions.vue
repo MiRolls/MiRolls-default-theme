@@ -3,7 +3,7 @@
         <span class="questionTitle">{{ indexFor + 1 }}. {{ quest.title }}</span>
         <span class="questionType">{{ getType() }}</span>
         <!--        <div v-if="quest.type !== 'blank' || quest.type !== 'manyBlank'">-->
-        <div v-if="quest.type === 'radio' || quest.type === 'multipleChoice'">
+        <div v-if="quest.type === 'radio' || quest.type === 'choice'">
             <div class="options" v-for="(title,index) of quest.options" :key="index + title" @click="select(index)">
                 <div :class="'changeCircle'" :style="answer[index] ? this.beChoose : {}"/>
                 <span>{{ title }}</span>
@@ -58,9 +58,10 @@ export default {
             }
         },
         getType() {
+            console.log(this.quest)
             if (this.quest.type === "radio") {
                 return this.$t("singleChoice")
-            } else if (this.quest.type === "multipleChoice") {
+            } else if (this.quest.type === "choice") {
                 return this.$t("multipleChoice")
             } else {
                 return this.$t("fillInTheBlank")
