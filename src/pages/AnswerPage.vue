@@ -24,8 +24,8 @@ export default {
     data() {
         return {
             roll: {},
-            // mode: "release",
-            mode: "test",
+            mode: "release",
+            // mode: "test",
             find: 0,
         }
     },
