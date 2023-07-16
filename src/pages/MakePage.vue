@@ -4,7 +4,7 @@
         <AppBar></AppBar>
         <MakePageLeftControl @add="addQuest" @submit="submitRoll" @title-change="changeTitle" @save-roll="saveRoll"/>
         <RollsPage ref="rollsPage" :title="rollsTitle"/>
-        <PageFooter style="margin-left: 30%"/>
+        <PageFooter style="margin-left: 24%"/>
     </div>
 </template>
 <script>
