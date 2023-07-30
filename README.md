@@ -8,10 +8,10 @@ Download and drag to MiRolls/Theme
 Usage for [MiRolls](https://github.com/MiRolls/MiRolls)
 
 ## Sponsor
-![JetBrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)
+[![JetBrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://jetbrains.com/)
 
 ## Dependent project
-[Vue(MIT)](https://github.com/vuejs/core) -
+[Vue(MIT)](https://github.com/vuejs/core)
 
 [Vite(MIT)](https://github.com/vitejs/vite)
 
@@ -21,8 +21,9 @@ Usage for [MiRolls](https://github.com/MiRolls/MiRolls)
 
 [Vue-router(MIT)](https://github.com/vuejs/router)
 
-[Vue-i18n](https://github.com/kazupon/vue-i18n)
+[Vue-i18n(MIT)](https://github.com/kazupon/vue-i18n)
 
 ## License
 
 [MIT](https://mit-license.org)
+Copyright (c) 2022-present, mi Liang
