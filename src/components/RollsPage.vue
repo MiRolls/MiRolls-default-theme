@@ -1,6 +1,6 @@
 <template>
     <div id="rollsPage">
-        <h2 class="TitleRollsT">{{ rolls.title }}</h2>
+        <h2 class="TitleRollsT" v-auto-animate>{{ rolls.title }}</h2>
         <div class="topic" v-for="(item,index) in rolls.quest" :key="index">
             <span>{{ index + 1 }}.  </span>
             <input class="questTitle" :placeholder="$t('makeQuestBlankTitleNormal')" type="text"
@@ -8,8 +8,8 @@
             <input v-if="item.type === 'blank' || item.type === 'manyBlank'" class="questPlaceholder"
                    v-model="item.placeholder" :placeholder="$t('makeQuestTips')">
             <div v-if="item.type === 'choice' || item.type === 'radio'" class="options">
-                <div v-for="(options,i) in item.optionsNumber" :key="options + i">
-                    <span>{{i + 1}}.</span>
+                <div v-for="(options,i) in item.optionsNumber" :key="options + i +111">
+                    <span>{{ i + 1 }}.</span>
                     <input :placeholder="$t('makeOptions')+(i+1)" class="option"
                            v-model="item.options[i]" type="text">
                 </div>
@@ -151,7 +151,7 @@ export default {
     height: 18px;
     margin-top: 10px;
     width: 50%;
-    //display: block;
+//display: block;
 }
 
 .option:focus {
