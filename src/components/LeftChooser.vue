@@ -43,7 +43,7 @@ export default {
 #leftChooser{
   position: fixed;
   height: calc(100% - 73px);
-  margin-top: 50px;
+  margin-top: 11px;
   width: 25%;
   background-color: #f5f5f5;
 }

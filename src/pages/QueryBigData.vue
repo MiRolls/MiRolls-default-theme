@@ -1,11 +1,10 @@
 <template>
-  111
-  <div id="queryPage">
-    <app-bar></app-bar>
-    <left-chooser mode="bigData"></left-chooser>
-    <big-data></big-data>
-    <PageFooter style="margin-left: 25%" margin=""></PageFooter>
-  </div>
+    <div id="queryPage">
+        <app-bar></app-bar>
+        <left-chooser mode="bigData"></left-chooser>
+        <big-data></big-data>
+        <page-footer style="margin-left: 20%"></page-footer>
+    </div>
 
 </template>
 <script>
@@ -15,13 +14,13 @@ import PageFooter from "../components/PageFooter.vue";
 import BigData from "../components/bigData.vue";
 
 export default {
-  name: "QueryPage",
-  components: {BigData, PageFooter, LeftChooser, AppBar},
+    name: "QueryPage",
+    components: {BigData, PageFooter, LeftChooser, AppBar},
 }
 </script>
 <style scoped>
-#queryPage{
-  /*height: calc(100% - 73px);*/
-  height: 100%;
+#queryPage {
+    /*height: calc(100% - 73px);*/
+    height: 100%;
 }
 </style>
