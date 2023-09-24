@@ -7,13 +7,35 @@
                 <span>{{ index + 1 + ". " + item.title }}</span>
                 <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
                 <!--Data Boxes-->
+                <div v-if="item.type==='choice'"></div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import {reactive} from "vue";
+import {onMounted, reactive} from "vue";
+
+onMounted(() => {
+    let optionArray = [];
+    //options in this var.
+    data.questions.forEach((item,index)=>{
+        //Loop the array
+        if (item.type === "radio"){
+            //Multiple choice
+            const option = {
+                series:[
+                    {
+                        type:"pie",
+                        data:[
+
+                        ]
+                    }
+                ]
+            }
+        }
+    })
+})
 
 const typeToDataType = (type) => {
     let dataType;
