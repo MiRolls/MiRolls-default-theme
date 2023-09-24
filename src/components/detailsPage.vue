@@ -1,5 +1,6 @@
 <template>
     <div id="details">
+
     </div>
 </template>
 
@@ -10,6 +11,7 @@ export default {
 </script>
 
 <style scoped>
+
 #details{
     margin-top: 60px;
     margin-left: 25%;

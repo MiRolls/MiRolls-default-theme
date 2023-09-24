@@ -49,6 +49,8 @@ const zh = {
     submit: "提交",
     serverError: "服务器出现问题！请稍后再试！",
     submitSuccess:"提交成功！",
+    bigDataOverview: "大数据概览",
+    bigDataAnswer: "问卷回答数: "
 }
 
 export default zh;

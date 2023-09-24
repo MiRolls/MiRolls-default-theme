@@ -48,7 +48,9 @@ const en = {
     noComplete: "Some questions aren't completed",
     submit: "submit",
     serverError: "The server was error, please wait a moment and try again",
-    submitSuccess: "Submit success!"
+    submitSuccess: "Submit success!",
+    bigDataOverview: "big data overview",
+    bigDataAnswer: "Number of answer: ",
 }
 
 export default en;

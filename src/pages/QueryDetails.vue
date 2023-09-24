@@ -1,8 +1,8 @@
 <template>
     <div id="queryPage">
         <app-bar></app-bar>
-        <left-chooser mode="details"></left-chooser>
         <details-page></details-page>
+        <left-chooser mode="details"></left-chooser>
         <page-footer style="margin-left: 20%"></page-footer>
     </div>
 </template>

@@ -1,8 +1,8 @@
 <template>
     <div id="queryPage">
-        <app-bar></app-bar>
         <left-chooser mode="bigData"></left-chooser>
         <big-data></big-data>
+        <app-bar></app-bar>
         <page-footer style="margin-left: 20%"></page-footer>
     </div>
 
