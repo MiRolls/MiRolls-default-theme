@@ -24,7 +24,7 @@ const questionsBox = ref(null);
         let optionArray = [];
         let domList = questionsBox.value.children;
         console.log(domList)
-        //options in this var.
+        //options in this var
         data.questions.forEach((item, index) => {
             //Loop the array
             let option; //new var. option
