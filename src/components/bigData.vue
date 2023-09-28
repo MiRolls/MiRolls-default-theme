@@ -19,19 +19,23 @@ import {onMounted, reactive} from "vue";
 onMounted(() => {
     let optionArray = [];
     //options in this var.
-    data.questions.forEach((item,index)=>{
+    data.questions.forEach((item, index) => {
         //Loop the array
-        if (item.type === "radio"){
-            //Multiple choice
-            const option = {
-                series:[
+        if (item.type === "radio") {
+            //Single choice
+            let option = { //new option
+                series: [
                     {
-                        type:"pie",
-                        data:[
-
-                        ]
+                        type: "pie", //pie
+                        data: []
                     }
                 ]
+            }
+            for (let i = 0; i < item.answer.length; i++) {
+                option.series.data.push({
+                    value: item.answer[i].numberOfSelect,
+                    name: item.answer[i].option,
+                });
             }
         }
     })
@@ -114,7 +118,7 @@ const data = reactive({
     padding: 25px;
     margin: 20px 12px;
     border-radius: 12px;
-    box-shadow: 1px 1px 6px gray;
+    box-shadow: 1px 1px 6px rgb(128, 128, 128);
     width: 80%;
 }
 </style>
