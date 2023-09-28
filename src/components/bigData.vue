@@ -3,43 +3,52 @@
         <div class="bigdata-box">
             <span class="title">{{ $t("bigDataOverview") }}</span>
             <span class="number-of-answer">{{ $t("bigDataAnswer") + data.answerOfNumber }}</span>
-            <div class="questions" v-for="(item,index) in data.questions" :key="item+index">
-                <span>{{ index + 1 + ". " + item.title }}</span>
-                <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
-                <!--Data Boxes-->
-                <div v-if="item.type==='choice'"></div>
+            <div ref="questionsBox">
+                <div class="questions" v-for="(item,index) in data.questions" :key="item+index">
+                    <span>{{ index + 1 + ". " + item.title }}</span>
+                    <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
+                    <!--Data Boxes-->
+                    <div v-if="item.type==='choice'"></div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import {onMounted, reactive} from "vue";
+import {onMounted, reactive, ref} from "vue";
 
-onMounted(() => {
-    let optionArray = [];
-    //options in this var.
-    data.questions.forEach((item, index) => {
-        //Loop the array
-        if (item.type === "radio") {
-            //Single choice
-            let option = { //new option
-                series: [
-                    {
-                        type: "pie", //pie
-                        data: []
-                    }
-                ]
+const questionsBox = ref(null);
+
+    onMounted(() => {
+        let optionArray = [];
+        let domList = questionsBox.value.children;
+        console.log(domList)
+        //options in this var.
+        data.questions.forEach((item, index) => {
+            //Loop the array
+            let option; //new var. option
+            if (item.type === "radio") {
+                //Single choice
+                option = {
+                    series: [
+                        {
+                            type: "pie", //pie
+                            data: []
+                        }
+                    ]
+                }
+                for (let i = 0; i < item.answer.length; i++) {
+                    option.series[index].data.push({
+                        value: item.answer[i].numberOfSelect,
+                        name: item.answer[i].option,
+                    });
+                }
+                console.log(JSON.stringify(option))
             }
-            for (let i = 0; i < item.answer.length; i++) {
-                option.series.data.push({
-                    value: item.answer[i].numberOfSelect,
-                    name: item.answer[i].option,
-                });
-            }
-        }
+            optionArray.push(option)
+        })
     })
-})
 
 const typeToDataType = (type) => {
     let dataType;
@@ -55,7 +64,7 @@ const data = reactive({
     questions: [ //在这里记录这每一道题目
         //如果是填空题，应该返回选择数量
         {
-            type: "choice",//类型
+            type: "radio",//类型
             title: "题目标题",
             answer: [
                 {
