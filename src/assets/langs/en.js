@@ -51,6 +51,7 @@ const en = {
     submitSuccess: "Submit success!",
     bigDataOverview: "big data overview",
     bigDataAnswer: "Number of answer: ",
+    peopleChoose:"people choose"
 }
 
 export default en;

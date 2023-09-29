@@ -20,6 +20,7 @@
 import "echarts";
 import VChart from "vue-echarts";
 import {onMounted, reactive, ref} from "vue";
+import langList from "../../langList";
 
 // const questionsBox = ref(null);
 let optionArray = ref([]);
@@ -40,7 +41,6 @@ onMounted(() => {
                 legend: {
                     orient: 'vertical',
                     left: 'left',
-                    data: [],
                 },
                 series: [
                     {
@@ -58,13 +58,44 @@ onMounted(() => {
 
             }
             for (let i = 0; i < item.answer.length; i++) {
-                option.series[index].data.push({
+                option.series[0].data.push({
                     value: item.answer[i].numberOfSelect,
                     name: item.answer[i].option,
                 });
-                option.legend.data.push(item.answer[i].option)
             }
-            // console.log(JSON.stringify(option))
+        } else if (item.type === "choice") {
+            //Multiple choice
+            option = {
+                tooltip: {
+                    // formatter: '{b} : {c}' + t("peopleChoose"),
+                    formatter: '{b} : {c}' + langList[window.site.lang].peopleChoose,
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                },
+                xAxis: {
+                    data: []
+                },
+                yAxis: {},
+                series: [
+                    {
+                        type: 'bar',
+                        data: [],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                            },
+                        },
+                    },
+                ]
+            };
+            for (let i = 0; i < item.answer.length; i++) {
+                option.series[0].data.push(item.answer[i].numberOfSelect)
+                option.xAxis.data.push(item.answer[i].option)
+            }
         }
 
         optionArray.value.push(option)
@@ -86,6 +117,24 @@ const data = reactive({
         //如果是填空题，应该返回选择数量
         {
             type: "radio",//类型
+            title: "题目标题",
+            answer: [
+                {
+                    option: "选项1",
+                    numberOfSelect: 10//选择的人数
+                },
+                {
+                    option: "选项2",
+                    numberOfSelect: 80//选择的人数
+                },
+                //有几个选项就来几个对象。
+                //有两种写法，一种是写对象进去
+                //还有一种是写字符串
+                //用哪种写法主要看题目类型
+            ]//注意这里是数组
+        },//这个例子就是一道多选，再来一个填空
+        {
+            type: "choice",//类型
             title: "题目标题",
             answer: [
                 {
