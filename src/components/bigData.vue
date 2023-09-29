@@ -45,9 +45,17 @@ onMounted(() => {
                 series: [
                     {
                         type: "pie", //pie
-                        data: []
+                        data: [],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                            },
+                        },
                     }
-                ]
+                ],
+
             }
             for (let i = 0; i < item.answer.length; i++) {
                 option.series[index].data.push({
@@ -147,6 +155,6 @@ const data = reactive({
 .chart {
     height: 400px;
     width: 100%;
-    //font-size: 16px;
+//font-size: 16px;
 }
 </style>
