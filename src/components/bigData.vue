@@ -8,7 +8,7 @@
                     <span>{{ index + 1 + ". " + item.title }}</span>
                     <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
                     <!--Data Boxes-->
-                    <div v-if="item.type==='choice'"></div>
+                    <div class="chart"></div>
                 </div>
             </div>
         </div>
@@ -17,38 +17,42 @@
 
 <script setup>
 import {onMounted, reactive, ref} from "vue";
+import * as echarts from "echarts/core"
 
 const questionsBox = ref(null);
 
-    onMounted(() => {
-        let optionArray = [];
-        let domList = questionsBox.value.children;
-        console.log(domList)
-        //options in this var
-        data.questions.forEach((item, index) => {
-            //Loop the array
-            let option; //new var. option
-            if (item.type === "radio") {
-                //Single choice
-                option = {
-                    series: [
-                        {
-                            type: "pie", //pie
-                            data: []
-                        }
-                    ]
-                }
-                for (let i = 0; i < item.answer.length; i++) {
-                    option.series[index].data.push({
-                        value: item.answer[i].numberOfSelect,
-                        name: item.answer[i].option,
-                    });
-                }
-                console.log(JSON.stringify(option))
+onMounted(() => {
+    let optionArray = [];
+    let domList = questionsBox.value.children;
+    console.log(domList)
+    //options in this var
+    data.questions.forEach((item, index) => {
+        //Loop the array
+        let option; //new var. option
+        if (item.type === "radio") {
+            //Single choice
+            option = {
+                series: [
+                    {
+                        type: "pie", //pie
+                        data: []
+                    }
+                ]
             }
-            optionArray.push(option)
-        })
+            for (let i = 0; i < item.answer.length; i++) {
+                option.series[index].data.push({
+                    value: item.answer[i].numberOfSelect,
+                    name: item.answer[i].option,
+                });
+            }
+            // console.log(JSON.stringify(option))
+        }
+        console.log(domList[index].children[2])
+        const chart = echarts.init(domList[index].children[2]);
+        chart.setOption(option)
+        optionArray.push(chart)
     })
+})
 
 const typeToDataType = (type) => {
     let dataType;
@@ -129,5 +133,10 @@ const data = reactive({
     border-radius: 12px;
     box-shadow: 1px 1px 6px rgb(128, 128, 128);
     width: 80%;
+}
+
+.chart{
+    height: 100px;
+    width: 100%;
 }
 </style>
