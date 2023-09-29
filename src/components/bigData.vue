@@ -8,7 +8,8 @@
                     <span>{{ index + 1 + ". " + item.title }}</span>
                     <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
                     <!--Data Boxes-->
-                    <div class="chart"></div>
+                    <!--                    <div class="chart"></div>-->
+                    <v-chart :option="optionArray[index]" class="chart"></v-chart>
                 </div>
             </div>
         </div>
@@ -16,15 +17,16 @@
 </template>
 
 <script setup>
+import "echarts";
+import VChart from "vue-echarts";
 import {onMounted, reactive, ref} from "vue";
-import * as echarts from "echarts/core"
 
-const questionsBox = ref(null);
+// const questionsBox = ref(null);
+let optionArray = ref([]);
 
 onMounted(() => {
-    let optionArray = [];
-    let domList = questionsBox.value.children;
-    console.log(domList)
+    // let domList = questionsBox.value.children;
+    // console.log(domList)
     //options in this var
     data.questions.forEach((item, index) => {
         //Loop the array
@@ -32,6 +34,14 @@ onMounted(() => {
         if (item.type === "radio") {
             //Single choice
             option = {
+                tooltip: {
+                    formatter: '{b} : {c} ({d}%)',
+                },
+                legend: {
+                    orient: 'vertical',
+                    left: 'left',
+                    data: [],
+                },
                 series: [
                     {
                         type: "pie", //pie
@@ -44,13 +54,12 @@ onMounted(() => {
                     value: item.answer[i].numberOfSelect,
                     name: item.answer[i].option,
                 });
+                option.legend.data.push(item.answer[i].option)
             }
             // console.log(JSON.stringify(option))
         }
-        console.log(domList[index].children[2])
-        const chart = echarts.init(domList[index].children[2]);
-        chart.setOption(option)
-        optionArray.push(chart)
+
+        optionArray.value.push(option)
     })
 })
 
@@ -135,8 +144,9 @@ const data = reactive({
     width: 80%;
 }
 
-.chart{
-    height: 100px;
+.chart {
+    height: 400px;
     width: 100%;
+    //font-size: 16px;
 }
 </style>
