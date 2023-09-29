@@ -29,7 +29,7 @@ onMounted(() => {
     // let domList = questionsBox.value.children;
     // console.log(domList)
     //options in this var
-    data.questions.forEach((item, index) => {
+    data.questions.forEach((item) => {
         //Loop the array
         let option; //new var. option
         if (item.type === "radio") {
@@ -70,10 +70,6 @@ onMounted(() => {
                     // formatter: '{b} : {c}' + t("peopleChoose"),
                     formatter: '{b} : {c}' + langList[window.site.lang].peopleChoose,
                 },
-                legend: {
-                    orient: 'vertical',
-                    left: 'left',
-                },
                 xAxis: {
                     data: []
                 },
@@ -95,6 +91,26 @@ onMounted(() => {
             for (let i = 0; i < item.answer.length; i++) {
                 option.series[0].data.push(item.answer[i].numberOfSelect)
                 option.xAxis.data.push(item.answer[i].option)
+            }
+        } else {
+            // fill in the blank
+            option = {
+                tooltip: {
+                    formatter: '{b} : {c}',
+                },
+                series:[
+                    {
+                        type:"wordCloud",
+                        data:[],
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)',
+                            },
+                        },
+                    }
+                ]
             }
         }
 
@@ -143,7 +159,7 @@ const data = reactive({
                 },
                 {
                     option: "选项2",
-                    numberOfSelect: 80//选择的人数
+                    numberOfSelect: 80.5//选择的人数
                 },
                 //有几个选项就来几个对象。
                 //有两种写法，一种是写对象进去
