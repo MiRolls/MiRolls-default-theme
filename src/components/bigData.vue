@@ -3,13 +3,17 @@
         <div class="bigdata-box">
             <span class="title">{{ $t("bigDataOverview") }}</span>
             <span class="number-of-answer">{{ $t("bigDataAnswer") + data.answerOfNumber }}</span>
-            <div ref="questionsBox">
-                <div class="questions" v-for="(item,index) in data.questions" :key="item+index">
-                    <span>{{ index + 1 + ". " + item.title }}</span>
-                    <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
-                    <!--Data Boxes-->
-                    <!--                    <div class="chart"></div>-->
-                    <v-chart :option="optionArray[index]" class="chart"></v-chart>
+            <div>
+                <div v-for="(item,index) in data.questions" :key="item+index">
+                    <div class="question">
+                        <span>{{ index + 1 + ". " + item.title }}</span>
+                        <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
+                        <!--Data Boxes-->
+                        <!--                    <div class="chart"></div>-->
+                        <v-chart :option="optionArray[index]" class="chart"></v-chart>
+                    </div>
+                    <div class="append-box">
+                    </div>
                 </div>
             </div>
         </div>
@@ -192,16 +196,27 @@ const data = reactive({
     margin-top: 20px;
 }
 
-.questions {
+.question {
     padding: 25px;
-    margin: 20px 12px;
-    border-radius: 12px;
+    margin: 20px 12px 0;
+    border-radius: 12px 12px 0 0;
     box-shadow: 1px 1px 6px rgb(128, 128, 128);
     width: 80%;
 }
 
+.append-box{
+    height: 29px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 1px 1px 6px rgb(128, 128, 128);
+    background: #bdbdbd;
+    margin-bottom: 20px;
+    margin-left: 12px;
+    margin-right: 12px;
+    width: calc(80% + 50px)
+}
+
 .chart {
-    height: 400px;
+    height: 370px;
     width: 100%;
 //font-size: 16px;
 }
