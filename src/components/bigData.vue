@@ -94,24 +94,7 @@ onMounted(() => {
             }
         } else {
             // fill in the blank
-            option = {
-                tooltip: {
-                    formatter: '{b} : {c}',
-                },
-                series:[
-                    {
-                        type:"wordCloud",
-                        data:[],
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            },
-                        },
-                    }
-                ]
-            }
+            //
         }
 
         optionArray.value.push(option)
