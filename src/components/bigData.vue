@@ -12,7 +12,10 @@
                         <!--                    <div class="chart"></div>-->
                         <v-chart :option="optionArray[index]" class="chart"></v-chart>
                     </div>
-                    <div class="append-box">{{$t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber}}  {{$t(getChartType(item))}}</div>
+                    <div class="append-box">
+                        <span>{{$t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber}}  {{$t(getChartType(item))}}</span>
+                        <span class="what-is-that" v-if="getChartType(item) === 'sentimentAnalysisChart'">{{$t("whatIsThat")}}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,7 +37,7 @@ const getChartType = (item)=>{
     }else if (item.type ==="radio"){
         return "pieChart"
     }else{
-        return "wordCloud"
+        return "sentimentAnalysisChart"
     }
 }
 
@@ -229,5 +232,11 @@ const data = reactive({
     height: 370px;
     width: 100%;
 //font-size: 16px;
+}
+
+.what-is-that{
+    color: #eeeeee;
+    margin-left: 16px;
+    cursor: pointer;
 }
 </style>

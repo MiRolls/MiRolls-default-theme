@@ -55,7 +55,8 @@ const zh = {
     numberOfPeopleAnsweringTheQuestion: "回答数：",
     barChart:"柱状图",
     pieChart:"饼图",
-    wordCloud:"词云"
+    sentimentAnalysisChart:"情感分析图",
+    whatIsThat:"那是什么？",
 }
 
 export default zh;

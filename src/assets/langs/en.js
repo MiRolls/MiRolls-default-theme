@@ -55,7 +55,8 @@ const en = {
     numberOfPeopleAnsweringTheQuestion: "Number of answering: ",
     barChart:"bar chart",
     pieChart:"pie chart",
-    wordCloud:"word cloud"
+    sentimentAnalysisChart:"sentiment analysis chart",
+    whatIsThat: "what is that?"
 }
 
 export default en;
