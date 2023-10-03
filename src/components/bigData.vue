@@ -12,8 +12,7 @@
                         <!--                    <div class="chart"></div>-->
                         <v-chart :option="optionArray[index]" class="chart"></v-chart>
                     </div>
-                    <div class="append-box">
-                    </div>
+                    <div class="append-box">{{$t("numberOfPeopleAnsweringTheQuestion")}}</div>
                 </div>
             </div>
         </div>
@@ -205,14 +204,15 @@ const data = reactive({
 }
 
 .append-box{
-    height: 29px;
+    height: 16px;
+    padding: 7px 10px;
     border-radius: 0 0 12px 12px;
     box-shadow: 1px 1px 6px rgb(128, 128, 128);
     background: #bdbdbd;
     margin-bottom: 20px;
     margin-left: 12px;
     margin-right: 12px;
-    width: calc(80% + 50px)
+    width: calc(80% + 50px - 20px)
 }
 
 .chart {

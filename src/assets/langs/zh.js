@@ -52,6 +52,7 @@ const zh = {
     bigDataOverview: "大数据概览",
     bigDataAnswer: "问卷回答数: ",
     peopleChoose: "人选择",
+    numberOfPeopleAnsweringTheQuestion: "回答数："
 }
 
 export default zh;
