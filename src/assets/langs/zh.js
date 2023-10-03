@@ -52,7 +52,10 @@ const zh = {
     bigDataOverview: "大数据概览",
     bigDataAnswer: "问卷回答数: ",
     peopleChoose: "人选择",
-    numberOfPeopleAnsweringTheQuestion: "回答数："
+    numberOfPeopleAnsweringTheQuestion: "回答数：",
+    barChart:"柱状图",
+    pieChart:"饼图",
+    wordCloud:"词云"
 }
 
 export default zh;

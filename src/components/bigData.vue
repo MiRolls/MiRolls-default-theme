@@ -12,7 +12,7 @@
                         <!--                    <div class="chart"></div>-->
                         <v-chart :option="optionArray[index]" class="chart"></v-chart>
                     </div>
-                    <div class="append-box">{{$t("numberOfPeopleAnsweringTheQuestion")}}</div>
+                    <div class="append-box">{{$t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber}}, {{$t(getChartType(item))}}</div>
                 </div>
             </div>
         </div>
@@ -27,6 +27,16 @@ import langList from "../../langList";
 
 // const questionsBox = ref(null);
 let optionArray = ref([]);
+
+const getChartType = (item)=>{
+    if (item.type === "choice"){
+        return "barChart"
+    }else if (item.type ==="radio"){
+        return "pieChart"
+    }else{
+        return "wordCloud"
+    }
+}
 
 onMounted(() => {
     // let domList = questionsBox.value.children;

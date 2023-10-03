@@ -52,7 +52,10 @@ const en = {
     bigDataOverview: "big data overview",
     bigDataAnswer: "Number of answer: ",
     peopleChoose:"people choose",
-    numberOfPeopleAnsweringTheQuestion: "Number of answering: "
+    numberOfPeopleAnsweringTheQuestion: "Number of answering: ",
+    barChart:"bar chart",
+    pieChart:"pie chart",
+    wordCloud:"word cloud"
 }
 
 export default en;
