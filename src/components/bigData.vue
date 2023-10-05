@@ -134,7 +134,7 @@ const data = reactive({
             type: "radio",//类型
             title: "题目标题",
             answer: [
-                {
+                 {
                     option: "选项1",
                     numberOfSelect: 10//选择的人数
                 },
@@ -186,15 +186,12 @@ const data = reactive({
     margin-top: 60px;
     margin-left: 25%;
     min-height: calc(100vh - 229px);
-//background: #cbcbcb;
 }
 
 .bigdata-box {
     padding: 20px 60px;
     margin-top: 90px;
     margin-bottom: calc(90px - 73px);
-
-//position: absolute;
 }
 
 .title {
@@ -231,7 +228,7 @@ const data = reactive({
 .chart {
     height: 370px;
     width: 100%;
-//font-size: 16px;
+    margin-top: 16px;
 }
 
 .what-is-that{
