@@ -55,8 +55,9 @@ const zh = {
     numberOfPeopleAnsweringTheQuestion: "回答数：",
     barChart:"柱状图",
     pieChart:"饼图",
-    sentimentAnalysisChart:"情感分析图",
-    whatIsThat:"那是什么？",
+    list:"列表",
+    whatIsThat:"了解更多",
+    savedRolls: "本地保存的问卷",
 }
 
 export default zh;

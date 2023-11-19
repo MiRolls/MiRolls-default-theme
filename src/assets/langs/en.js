@@ -53,10 +53,11 @@ const en = {
     bigDataAnswer: "Number of answer: ",
     peopleChoose:"people choose",
     numberOfPeopleAnsweringTheQuestion: "Number of answering: ",
-    barChart:"bar chart",
-    pieChart:"pie chart",
-    sentimentAnalysisChart:"sentiment analysis chart",
-    whatIsThat: "what is that?"
+    barChart:"Bar chart",
+    pieChart:"Pie chart",
+    list:"List",
+    whatIsThat: "Learn more",
+    savedRolls: "Saved locally"
 }
 
 export default en;

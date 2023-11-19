@@ -1,5 +1,6 @@
 <template>
     <div id="savedRolls">
+        <h2 style="margin-left: 22px">{{$t("savedRolls")}}</h2>
         <div class="line"></div>
         <div v-for="(item,index) in savedRolls" class="savedRoll" :key="item + index"
              @click="$router.push('/make?draft=' + JSON.stringify(item))">

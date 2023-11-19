@@ -10,11 +10,15 @@
                         <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
                         <!--Data Boxes-->
                         <!--                    <div class="chart"></div>-->
-                        <v-chart :option="optionArray[index]" class="chart"></v-chart>
+                        <v-chart v-if="item.type !== 'manyBlank' && item.type !== 'blank'" :option="optionArray[index]" class="chart"></v-chart>
+                        <ul v-else>
+                            <li v-for="(item1,index1) of item.answer" v-show="index1 < 3"><span>{{item1}}</span></li>
+                            <span v-if="item.answer.length > 3">......</span>
+                        </ul>
                     </div>
                     <div class="append-box">
                         <span>{{$t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber}}  {{$t(getChartType(item))}}</span>
-                        <span class="what-is-that" v-if="getChartType(item) === 'sentimentAnalysisChart'">{{$t("whatIsThat")}}</span>
+                        <span class="what-is-that" v-if="getChartType(item) === 'list'">{{$t("whatIsThat")}}</span>
                     </div>
                 </div>
             </div>
@@ -37,7 +41,7 @@ const getChartType = (item)=>{
     }else if (item.type ==="radio"){
         return "pieChart"
     }else{
-        return "sentimentAnalysisChart"
+        return "list"
     }
 }
 
@@ -172,6 +176,8 @@ const data = reactive({
             answer: [
                 "我认为一加一等于二",
                 "我认为一加一等于不了任何东西",
+                "喵喵喵",
+                "汪汪汪",
                 // ...
                 //有几个回答就写多少个答案
                 //到时候前端直接.length
@@ -219,7 +225,7 @@ const data = reactive({
     border-radius: 0 0 12px 12px;
     box-shadow: 1px 1px 6px rgb(128, 128, 128);
     background: #bdbdbd;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     margin-left: 12px;
     margin-right: 12px;
     width: calc(80% + 50px - 20px)
@@ -232,7 +238,7 @@ const data = reactive({
 }
 
 .what-is-that{
-    color: #eeeeee;
+    color: #4b4b4b;
     margin-left: 16px;
     cursor: pointer;
 }
