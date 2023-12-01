@@ -29,19 +29,19 @@ export const getRouter = (site) => {
                 title: site.name + " | " + getI18n(site.lang, "pageSearchTitle")
             },
         }, {
-            path: "/queryBigData",
+            path: "/queryBigData/:code",
             component: QueryPage,
             meta: {
                 title: site.name + " | " + getI18n(site.lang, "pageQueryBigData")
             },
         }, {
-            path: "/queryDetails",
+            path: "/queryDetails/:code",
             component: QueryDetails,
             meta: {
                 title: site.name + " | " + getI18n(site.lang, "pageQueryDetails")
             },
         }, {
-            path: "/:any",
+            path: "/:pathMatch(.*)*",
             component: NotFound,
             meta: {
                 title: site.name + " | " + getI18n(site.lang, "pageNotFoundTitle")

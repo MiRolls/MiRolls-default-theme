@@ -14,7 +14,7 @@ export default {
 
 #details{
     margin-top: 60px;
-    margin-left: 25%;
+    margin-left: 15%;
     background: #cbcbcb;
 }
 

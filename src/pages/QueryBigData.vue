@@ -1,9 +1,9 @@
 <template>
     <div id="queryPage">
-        <left-chooser mode="bigData"></left-chooser>
+        <left-chooser mode="bigData" :code="$route.params.code"></left-chooser>
         <big-data></big-data>
         <app-bar></app-bar>
-        <page-footer style="margin-left: 20%"></page-footer>
+        <page-footer style="margin-left: 10%"></page-footer>
     </div>
 
 </template>

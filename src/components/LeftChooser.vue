@@ -1,6 +1,6 @@
 <template>
     <div id="leftChooser">
-        <div class="chooser" :style="chooserStyle[0]" @click="$router.push('/queryBigData')">
+        <div class="chooser" :style="chooserStyle[0]" @click="$router.push('/queryBigData/' + this.code)">
             <svg
                 style="width: 16px;height: 16px;vertical-align: middle;display: inline-block;fill: currentColor;overflow: hidden;"
                 viewBox="0 0 1024 1024"
@@ -14,7 +14,8 @@
             </svg>
             <span class="chooserText"> {{ $t("queryBigDataOverview") }}</span>
         </div>
-        <div class="chooser" style="margin-top: 1px;" :style="chooserStyle[1]" @click="$router.push('/queryDetails')">
+        <div class="chooser" style="margin-top: 1px;" :style="chooserStyle[1]"
+             @click="$router.push('/queryDetails/' + this.code)">
             <svg class="icon"
                  style="width:16px;height: 16px;vertical-align: middle;fill: currentColor;overflow: hidden;"
                  viewBox="0 0 1024 1024"
@@ -44,6 +45,7 @@ export default {
     },
     props: {
         mode: String,
+        code: String
     },
     mounted() {
         if (this.mode === "bigData") {
@@ -62,8 +64,8 @@ export default {
     position: fixed;
     height: calc(100% - 73px);
     margin-top: 11px;
-    top:62px;
-    width: 25%;
+    top: 62px;
+    width: 15%;
     background-color: #f5f5f5;
 }
 

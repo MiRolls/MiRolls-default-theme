@@ -10,15 +10,16 @@
                         <span style="color: red">{{ $t(typeToDataType(item.type)) }}</span>
                         <!--Data Boxes-->
                         <!--                    <div class="chart"></div>-->
-                        <v-chart v-if="item.type !== 'manyBlank' && item.type !== 'blank'" :option="optionArray[index]" class="chart"></v-chart>
+                        <v-chart v-if="item.type !== 'manyBlank' && item.type !== 'blank'" :option="optionArray[index]"
+                                 class="chart"></v-chart>
                         <ul v-else>
-                            <li v-for="(item1,index1) of item.answer" v-show="index1 < 3"><span>{{item1}}</span></li>
+                            <li v-for="(item1,index1) of item.answer" v-show="index1 < 3"><span>{{ item1 }}</span></li>
                             <span v-if="item.answer.length > 3">......</span>
                         </ul>
                     </div>
                     <div class="append-box">
-                        <span>{{$t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber}}  {{$t(getChartType(item))}}</span>
-                        <span class="what-is-that" v-if="getChartType(item) === 'list'">{{$t("whatIsThat")}}</span>
+                        <span>{{ $t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber }}  {{ $t(getChartType(item)) }}</span>
+                        <span class="what-is-that" v-if="getChartType(item) === 'list'">{{ $t("whatIsThat") }}</span>
                     </div>
                 </div>
             </div>
@@ -31,24 +32,29 @@ import "echarts";
 import VChart from "vue-echarts";
 import {onMounted, reactive, ref} from "vue";
 import langList from "../../langList";
+import axios from "axios";
+import {useRoute} from "vue-router";
 
 // const questionsBox = ref(null);
 let optionArray = ref([]);
 
-const getChartType = (item)=>{
-    if (item.type === "choice"){
+const getChartType = (item) => {
+    if (item.type === "choice") {
         return "barChart"
-    }else if (item.type ==="radio"){
+    } else if (item.type === "radio") {
         return "pieChart"
-    }else{
+    } else {
         return "list"
     }
 }
 
 onMounted(() => {
+    // fetch the data
+    const route = useRoute()
+    // axios.post("/query/roll", {code: route.params.code})
     // let domList = questionsBox.value.children;
     // console.log(domList)
-    //options in this var
+    // options in this var.
     data.questions.forEach((item) => {
         //Loop the array
         let option; //new var. option
@@ -132,65 +138,14 @@ const typeToDataType = (type) => {
 const data = reactive({
     title: "问卷的标题",
     answerOfNumber: 400, //有多少个人回答此问卷的。
-    questions: [ //在这里记录这每一道题目
-        //如果是填空题，应该返回选择数量
-        {
-            type: "radio",//类型
-            title: "题目标题",
-            answer: [
-                 {
-                    option: "选项1",
-                    numberOfSelect: 10//选择的人数
-                },
-                {
-                    option: "选项2",
-                    numberOfSelect: 80//选择的人数
-                },
-                //有几个选项就来几个对象。
-                //有两种写法，一种是写对象进去
-                //还有一种是写字符串
-                //用哪种写法主要看题目类型
-            ]//注意这里是数组
-        },//这个例子就是一道多选，再来一个填空
-        {
-            type: "choice",//类型
-            title: "题目标题",
-            answer: [
-                {
-                    option: "选项1",
-                    numberOfSelect: 10//选择的人数
-                },
-                {
-                    option: "选项2",
-                    numberOfSelect: 80.5//选择的人数
-                },
-                //有几个选项就来几个对象。
-                //有两种写法，一种是写对象进去
-                //还有一种是写字符串
-                //用哪种写法主要看题目类型
-            ]//注意这里是数组
-        },//这个例子就是一道多选，再来一个填空
-        {
-            type: "manyBlank",//类型
-            title: "题目的标题",
-            answer: [
-                "我认为一加一等于二",
-                "我认为一加一等于不了任何东西",
-                "喵喵喵",
-                "汪汪汪",
-                // ...
-                //有几个回答就写多少个答案
-                //到时候前端直接.length
-            ]//注意这里是数组
-        },//这个例子就是一道填空
-    ]
+    questions: [],
 })
 </script>
 
 <style scoped>
 #bigdata {
     margin-top: 60px;
-    margin-left: 25%;
+    margin-left: 15%;
     min-height: calc(100vh - 229px);
 }
 
@@ -219,7 +174,7 @@ const data = reactive({
     width: 80%;
 }
 
-.append-box{
+.append-box {
     height: 16px;
     padding: 7px 4px 11px 15px;
     border-radius: 0 0 12px 12px;
@@ -237,7 +192,7 @@ const data = reactive({
     margin-top: 16px;
 }
 
-.what-is-that{
+.what-is-that {
     color: #4b4b4b;
     margin-left: 16px;
     cursor: pointer;
