@@ -62,7 +62,6 @@ onMounted(() => {
             data.answerOfNumber = res.data.answerOfNumber
             data.questions = res.data.questions
             data.questions.forEach((item) => {
-                //Loop the array
                 let option; //new var. option
                 if (item.type === "radio") {
                     //Single choice
