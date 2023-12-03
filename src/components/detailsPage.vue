@@ -15,7 +15,7 @@ export default {
 #details{
     margin-top: 60px;
     margin-left: 15%;
-    background: #cbcbcb;
+    min-height: calc(100vh - 229px);
 }
 
 </style>
