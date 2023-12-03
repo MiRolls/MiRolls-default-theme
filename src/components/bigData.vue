@@ -210,7 +210,7 @@ const typeToDataType = (type) => {
     margin: 20px 12px 0;
     border-radius: 12px 12px 0 0;
     box-shadow: 1px 1px 6px rgb(128, 128, 128);
-    width: calc(100% - 20px);
+    width: calc(100% - 70px);
 }
 
 .append-box {
@@ -222,7 +222,7 @@ const typeToDataType = (type) => {
     margin-bottom: 40px;
     margin-left: 12px;
     margin-right: 12px;
-    width: calc(80% + 50px - 20px)
+    width: calc(100% + 31px - 70px)
 }
 
 .chart {
