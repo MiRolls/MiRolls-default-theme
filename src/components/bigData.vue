@@ -223,6 +223,7 @@ const typeToDataType = (type) => {
     margin-left: 12px;
     margin-right: 12px;
     width: calc(80% + 50px - 20px)
+
 }
 
 .chart {
