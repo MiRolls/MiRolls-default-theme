@@ -55,8 +55,44 @@ onMounted(() => {
     // fetch the data
     const route = useRoute()
     axios.post("/query/roll", {code: route.params.code})
-    // axios.get("/")
+    axios.get("/")
         .then(res => {
+            res.data = {
+                title:"问卷的标题",
+                answerOfNumber:400, //有多少个人回答此问卷的。
+                questions:[ //在这里记录这每一道题目
+                    //如果是填空题，应该返回选择数量
+                    {
+                        type:"choice",//类型
+                        title:"题目标题",
+                        answer: [
+                            {
+                                option:"选项1",
+                                numberOfSelect:10//选择的人数
+                            },
+                            {
+                                option:"选项2",
+                                numberOfSelect:80//选择的人数
+                            },
+                            //有几个选项就来几个对象。
+                            //有两种写法，一种是写对象进去
+                            //还有一种是写字符串
+                            //用哪种写法主要看题目类型
+                        ]//注意这里是数组
+                    },//这个例子就是一道多选，再来一个填空
+                    {
+                        type:"manyBlank",//类型
+                        title:"题目标题",
+                        answer: [
+                            "我认为一加一等于二",
+                            "我认为一加一等于不了任何东西",
+                            // ...
+                            //有几个回答就写多少个答案
+                            //到时候前端直接.length
+                        ]//注意这里是数组
+                    },//这个例子就是一道填空
+                ]
+            }
             data.title = res.data.title
             data.answerOfNumber = res.data.answerOfNumber
             data.questions = res.data.questions
@@ -174,7 +210,7 @@ const typeToDataType = (type) => {
     margin: 20px 12px 0;
     border-radius: 12px 12px 0 0;
     box-shadow: 1px 1px 6px rgb(128, 128, 128);
-    width: 80%;
+    width: calc(100% - 20px);
 }
 
 .append-box {
