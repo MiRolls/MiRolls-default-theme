@@ -35,7 +35,7 @@ import VChart from "vue-echarts";
 import {onMounted, reactive, ref} from "vue";
 import langList from "../../langList";
 import axios from "axios";
-import {useRoute} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 
 // const questionsBox = ref(null);
 let optionArray = ref([]);
@@ -49,6 +49,7 @@ const getChartType = (item) => {
         return "list"
     }
 }
+const router = useRouter()
 const data = reactive({title: "", answerOfNumber: 0, questions: []})
 
 onMounted(() => {
@@ -130,8 +131,10 @@ onMounted(() => {
 
                 optionArray.value.push(option)
             })
-        })
+        }).catch(_ => {
 
+            router.push("/404")
+    })
 })
 
 const typeToDataType = (type) => {
