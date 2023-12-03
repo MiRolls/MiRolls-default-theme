@@ -18,7 +18,9 @@
                         </ul>
                     </div>
                     <div class="append-box">
-                        <span>{{ $t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber }}  {{ $t(getChartType(item)) }}</span>
+                        <span>{{
+                                $t("numberOfPeopleAnsweringTheQuestion") + data.answerOfNumber
+                            }}  {{ $t(getChartType(item)) }}</span>
                         <span class="what-is-that" v-if="getChartType(item) === 'list'">{{ $t("whatIsThat") }}</span>
                     </div>
                 </div>
@@ -47,84 +49,89 @@ const getChartType = (item) => {
         return "list"
     }
 }
+const data = reactive({title: "", answerOfNumber: 0, questions: []})
 
 onMounted(() => {
     // fetch the data
     const route = useRoute()
-    // axios.post("/query/roll", {code: route.params.code})
-    // let domList = questionsBox.value.children;
-    // console.log(domList)
-    // options in this var.
-    data.questions.forEach((item) => {
-        //Loop the array
-        let option; //new var. option
-        if (item.type === "radio") {
-            //Single choice
-            option = {
-                tooltip: {
-                    formatter: '{b} : {c} ({d}%)',
-                },
-                legend: {
-                    orient: 'vertical',
-                    left: 'left',
-                },
-                series: [
-                    {
-                        type: "pie", //pie
-                        data: [],
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            },
+    axios.post("/query/roll", {code: route.params.code})
+    // axios.get("/")
+        .then(res => {
+            data.title = res.data.title
+            data.answerOfNumber = res.data.answerOfNumber
+            data.questions = res.data.questions
+            data.questions.forEach((item) => {
+                //Loop the array
+                let option; //new var. option
+                if (item.type === "radio") {
+                    //Single choice
+                    option = {
+                        tooltip: {
+                            formatter: '{b} : {c} ({d}%)',
                         },
+                        legend: {
+                            orient: 'vertical',
+                            left: 'left',
+                        },
+                        series: [
+                            {
+                                type: "pie", //pie
+                                data: [],
+                                emphasis: {
+                                    itemStyle: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                    },
+                                },
+                            }
+                        ],
+
                     }
-                ],
-
-            }
-            for (let i = 0; i < item.answer.length; i++) {
-                option.series[0].data.push({
-                    value: item.answer[i].numberOfSelect,
-                    name: item.answer[i].option,
-                });
-            }
-        } else if (item.type === "choice") {
-            //Multiple choice
-            option = {
-                tooltip: {
-                    // formatter: '{b} : {c}' + t("peopleChoose"),
-                    formatter: '{b} : {c}' + langList[window.site.lang].peopleChoose,
-                },
-                xAxis: {
-                    data: []
-                },
-                yAxis: {},
-                series: [
-                    {
-                        type: 'bar',
-                        data: [],
-                        emphasis: {
-                            itemStyle: {
-                                shadowBlur: 10,
-                                shadowOffsetX: 0,
-                                shadowColor: 'rgba(0, 0, 0, 0.5)',
-                            },
+                    for (let i = 0; i < item.answer.length; i++) {
+                        option.series[0].data.push({
+                            value: item.answer[i].numberOfSelect,
+                            name: item.answer[i].option,
+                        });
+                    }
+                } else if (item.type === "choice") {
+                    //Multiple choice
+                    option = {
+                        tooltip: {
+                            // formatter: '{b} : {c}' + t("peopleChoose"),
+                            formatter: '{b} : {c}' + langList[window.site.lang].peopleChoose,
                         },
-                    },
-                ]
-            };
-            for (let i = 0; i < item.answer.length; i++) {
-                option.series[0].data.push(item.answer[i].numberOfSelect)
-                option.xAxis.data.push(item.answer[i].option)
-            }
-        } else {
-            // fill in the blank
-            //
-        }
+                        xAxis: {
+                            data: []
+                        },
+                        yAxis: {},
+                        series: [
+                            {
+                                type: 'bar',
+                                data: [],
+                                emphasis: {
+                                    itemStyle: {
+                                        shadowBlur: 10,
+                                        shadowOffsetX: 0,
+                                        shadowColor: 'rgba(0, 0, 0, 0.5)',
+                                    },
+                                },
+                            },
+                        ]
+                    };
+                    for (let i = 0; i < item.answer.length; i++) {
+                        option.series[0].data.push(item.answer[i].numberOfSelect)
+                        option.xAxis.data.push(item.answer[i].option)
+                    }
+                } else {
+                    // fill in the blank
+                    //
+                }
 
-        optionArray.value.push(option)
-    })
+                optionArray.value.push(option)
+            })
+        })
+
 })
 
 const typeToDataType = (type) => {
@@ -135,11 +142,7 @@ const typeToDataType = (type) => {
     return dataType;
 };
 
-const data = reactive({
-    title: "问卷的标题",
-    answerOfNumber: 400, //有多少个人回答此问卷的。
-    questions: [],
-})
+
 </script>
 
 <style scoped>
