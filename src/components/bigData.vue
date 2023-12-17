@@ -51,7 +51,7 @@ const getChartType = (item) => {
 }
 const router = useRouter()
 const data = reactive({title: "", answerOfNumber: 0, questions: []})
-const emits = defineEmits(["notfound"])
+const emits = defineEmits(["notfound","success"])
 
 onMounted(() => {
     // fetch the data
@@ -127,6 +127,7 @@ onMounted(() => {
                 }
                 optionArray.value.push(option)
             })
+            emits("success")
         }).catch(_ => {
             // errCode.value = 404
             emits("notfound")

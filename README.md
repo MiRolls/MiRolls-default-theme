@@ -2,28 +2,23 @@
 [![image](https://img.shields.io/badge/Author-liangmi-blue)](https://github.com/liangmiQwQ)
 > This is MiRolls' default theme. There is no need to manually download the release package, just download it directly in the MiRolls installer
 
+## What's this?
+This is Mirolls' default theme. Mirolls is a project to build your questionnaire system quickly.
+
+In this project, we have pretty animation and highly customizable config.
+
+We also have the analysis like bigdata and details.
+
 ## Usage
 Download and drag to MiRolls/Theme
 
-Usage for [MiRolls](https://github.com/MiRolls/MiRolls)
+Usage with [MiRolls](https://github.com/MiRolls/MiRolls)
 
 ## Sponsor
 [![JetBrains](https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.svg)](https://jetbrains.com/)
-
-## Dependent project
-[Vue(MIT)](https://github.com/vuejs/core)
-
-[Vite(MIT)](https://github.com/vitejs/vite)
-
-[Fontawesome](https://github.com/FortAwesome/vue-fontawesome)
-
-[Vue-cookies(MIT)](https://github.com/cmp-cc/vue-cookies)
-
-[Vue-router(MIT)](https://github.com/vuejs/router)
-
-[Vue-i18n(MIT)](https://github.com/kazupon/vue-i18n)
+Thanks to JetBrains for the Open Source development license(s)
 
 ## License
 
 [MIT](https://mit-license.org)
-Copyright (c) 2022-present, mi Liang
+Copyright (c) 2022-present, Mi Liang
