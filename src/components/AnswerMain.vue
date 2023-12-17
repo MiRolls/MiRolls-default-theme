@@ -32,7 +32,28 @@ export default {
         return {
             dialogBg: "#f62727",
             show: "",
-            answersRef: [],
+            answersRef: [{
+                title: "问卷标题",
+                quest: [
+                    // ...一些题目
+                    //选择题
+                    {
+                        type: "radio",
+                        optionsNumber: 3, //选择题特有的选项
+                        title: "问题题目",
+                        options: [
+                            "选项1",
+                            "选项2",
+                            "选项3"
+                        ]
+                    },
+                    {
+                        type: "blank",
+                        placeholder: "题目的提示",
+                        title: "问题的题目"
+                    }
+                ],
+            }],
             answer: {
                 link: this.link,
                 answer: []
