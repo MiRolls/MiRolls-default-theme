@@ -2,7 +2,7 @@
     <div id="Index">
         <AppBar></AppBar>
         <MainPage></MainPage>
-        <MiRollsInt></MiRollsInt>
+        <MiRollsInt :animation="animation"></MiRollsInt>
         <PageFooter></PageFooter>
     </div>
 </template>
@@ -16,6 +16,25 @@ import PageFooter from "../components/PageFooter.vue";
 export default {
     name: "IndexPage",
     components: {PageFooter, MiRollsInt, MainPage, AppBar},
+    data() {
+        return {
+            animation: false
+        }
+    },
+    mounted() {
+        window.addEventListener('scroll', () => {
+            setTimeout(()=>{
+                this.animation = true
+            })
+        });
+    },
+    unmounted() {
+        window.removeEventListener('scroll', () => {
+            setTimeout(()=>{
+                this.animation = true
+            })
+        })
+    }
 }
 </script>
 <style>

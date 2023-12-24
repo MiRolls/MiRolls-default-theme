@@ -37,7 +37,7 @@ export default {
 </script>
 <style>
 #homeMain {
-    height: 80%;
+    height: 100%;
     margin: 0;
     display: flex;
     flex-direction: column;
