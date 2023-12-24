@@ -4,6 +4,7 @@ const en = {
     pageSearchTitle: "Query",
     pageQueryBigData: "BigDataOverview",
     pageQueryDetails: "Details",
+    pageHome: "Home Page",
     titleOne: "Don't",
     titleTwo: "Login Account",
     titleTwo2: "Spend Money",

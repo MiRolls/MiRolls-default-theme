@@ -22,6 +22,9 @@ export const getRouter = (site) => {
         }, {
             path: "/",
             component: IndexPage,
+            meta: {
+                title: site.name + " | " + getI18n(site.lang, "pageHome")
+            },
         }, {
             path: "/search",
             component: SearchPage,
