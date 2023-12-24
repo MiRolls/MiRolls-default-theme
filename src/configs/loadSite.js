@@ -12,7 +12,7 @@ function loadSite(mode, callback) {
             icp: "A nice questionnaire system",
             lang: "en",
             needIcp: 0,
-            introduce: `# MiRolls\n![image]({{Logo}})\n\nMiRolls is a nice and useful questionnaire system. It is easy to build a questionnaire system with MiRolls.\n\n![MainPage.jpeg]({{Link}}image/MainPage.jpeg)\n\nAnd we also have good animation in MiRolls.`,
+            introduce: `# MiRolls\n![image]({{Logo}})\n\nMiRolls is a nice and useful questionnaire system. It is easy to build a questionnaire system with MiRolls.\n\n![MainPage.jpeg]({{Link}}image/MainPage.png)\n\nAnd we also have good animation in MiRolls.`,
         }
         // site = {}
         setTimeout(() => {
