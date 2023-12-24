@@ -1,5 +1,5 @@
 <template>
-    <div id="bar" :style="style">
+    <div id="bar" :style="style" :class="animation ? 'animate__animated animate__bounceInDown' : ''">
         <span id="title">{{ site.name }}</span>
         <span id="secTitle">{{ site.link }}</span>
         <titleBtn :innerHtml="$t('appBarHome')" @click="goHome" style="margin-left: 50px"/>
@@ -16,6 +16,9 @@ import {useRouter} from "vue-router";
 
 export default {
     name: 'AppBar',
+    props: {
+        animation: false
+    },
     methods: {
         goHome() {
             // window.location.href = "/#/";

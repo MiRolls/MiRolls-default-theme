@@ -20,6 +20,13 @@
           false,
           false
         ]
+      },
+      {
+        "title": "问题题目",
+        "answer": [
+          "yep"
+        ],
+        "type": "blank"
       }
     ]
   },
