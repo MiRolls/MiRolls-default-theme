@@ -6,13 +6,13 @@ function loadSite(mode, callback) {
         let site = {
             message: "success",
             name: "MiRolls",
-            link: "https://localhost:3000/",
+            link: "http://localhost:3000/",
             logo: "/favicon.png",
             mainColor: "rgb(21, 127, 248)",
             icp: "A nice questionnaire system",
             lang: "en",
             needIcp: 0,
-            introduce: `# MiRolls\n{{Logo}}\n\nMiRolls is a nice and useful questionnaire system. It is easy to build a questionnaire system with MiRolls.\n\n![MainPage.jpeg]({{Link}}/MainPage.jpeg)\n\nAnd we also have good animation in MiRolls.`,
+            introduce: `# MiRolls\n![image]({{Logo}})\n\nMiRolls is a nice and useful questionnaire system. It is easy to build a questionnaire system with MiRolls.\n\n![MainPage.jpeg]({{Link}}image/MainPage.jpeg)\n\nAnd we also have good animation in MiRolls.`,
         }
         // site = {}
         setTimeout(() => {
@@ -29,8 +29,30 @@ function loadSite(mode, callback) {
 
     // to change the language and logo
     function siteChanger(site) {
-        site.introduce.replace(/{{Link}}/g, site.link)
-        site.introduce.replace(/{{Logo}}/g, site.logo)
+        let tempLogo;
+        site.introduce = site.introduce.replace(/{{Link}}/g, site.link)
+        if (!site.logo.startsWith("http")) {// relative path
+            if (site.logo.startsWith("/")) {// has "/"
+                if (site.link.endsWith("/")) {// end has "/"
+                    // has 2 "/" now
+                    tempLogo = site.link + site.logo.substring(1)
+                } else {
+                    // only 1 "/" now
+                    tempLogo = site.link + site.logo
+                }
+            } else { // don't have any "/"
+                if (site.link.endsWith("/")) {
+                    // has 1 "/"
+                    tempLogo = site.link + site.logo
+                } else {
+                    // don't have any "/"
+                    tempLogo = site.link + "/" + site.logo
+                }
+
+            }
+        }
+        site.introduce = site.introduce.replace(/{{Logo}}/g, tempLogo)
+        console.log(site.introduce)
         // replace introduce
         document.getElementById("favicon").href = site.logo;
         document.documentElement.lang = site.lang;
