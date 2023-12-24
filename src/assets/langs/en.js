@@ -4,7 +4,7 @@ const en = {
     pageSearchTitle: "Query",
     pageQueryBigData: "BigDataOverview",
     pageQueryDetails: "Details",
-    titleOne: "No",
+    titleOne: "Don't",
     titleTwo: "Login account",
     titleTwo2: "Spend money",
     titleThere: "You can enjoy the excellent questionnaire system",
