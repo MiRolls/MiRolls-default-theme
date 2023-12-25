@@ -190,12 +190,12 @@ export default {
 }
 
 #rollsPage {
-    width: calc(50% - 100px);
+    width: calc(0.75 * 76% - 100px);
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.61);
     padding: 30px 50px 30px 50px;
     margin-top: 100px;
     margin-bottom: 50px;
-    margin-left: calc(30% + 10%);
+    margin-left: calc(0.125 * 76% + 24%);
     min-height: calc(100% - 123px);
     border-radius: 1em;
 }
