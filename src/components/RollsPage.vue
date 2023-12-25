@@ -1,6 +1,6 @@
 <template>
-    <div id="rollsPage">
-        <h2 class="TitleRollsT" v-auto-animate>{{ rolls.title }}</h2>
+    <div id="rollsPage" class="animate__animated animate__bounceInUp">
+        <h2 class="TitleRollsT">{{ rolls.title }}</h2>
         <div class="topic" v-for="(item,index) in rolls.quest" :key="index">
             <span>{{ index + 1 }}.  </span>
             <input class="questTitle" :placeholder="$t('makeQuestBlankTitleNormal')" type="text"
