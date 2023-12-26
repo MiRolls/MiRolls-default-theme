@@ -79,9 +79,17 @@ export default {
             // this.$delete(this.rolls.quest, index)
             // this.rolls.quest.splice(index,1)
             setTimeout(() => {
+                console.log(target.parentElement);
+                target.parentElement.style.marginTop = target.parentElement.offsetHeight + "px" // ad normally margin
+                setTimeout(()=>target.parentElement.classList.add("transition-halfS")/* add transition class */,10)
+
                 this.rolls.quest.splice(index, 1)
                 target.parentElement.className = "topic"
             }, 500)
+            setTimeout(()=>{
+                target.parentElement.style.margin = null // ad normally margin
+                setTimeout(()=>target.parentElement.classList.remove("transition-halfS"),510)
+            },520)
             let target = event.target
             while (target.tagName !== "BUTTON") {
                 target = target.parentElement
@@ -138,6 +146,10 @@ export default {
 }
 </script>
 <style>
+.transition-halfS{
+    transition: 0.5s;
+}
+
 .delButton {
     border: none;
     background: none;
@@ -192,7 +204,8 @@ export default {
     width: calc(100% - 60px);
     padding: 10px 30px 10px 30px;
     position: relative;
-    border-bottom: 1px solid #bebebe;;
+    border-bottom: 1px solid #bebebe;
+    //transition: 0.5s;
 //border-top: 1px solid #bebebe; text-align: left;
 }
 
