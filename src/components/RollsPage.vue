@@ -81,7 +81,7 @@ export default {
             setTimeout(() => {
                 console.log(target.parentElement);
                 target.parentElement.style.marginTop = target.parentElement.offsetHeight + "px" // ad normally margin
-                setTimeout(()=>target.parentElement.classList.add("transition-halfS")/* add transition class */,10)
+                setTimeout(()=>target.parentElement.classList.add("transition-halfS")/* add transition class */,20)
 
                 this.rolls.quest.splice(index, 1)
                 target.parentElement.className = "topic"
