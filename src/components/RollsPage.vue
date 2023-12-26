@@ -15,15 +15,15 @@
                 </div>
                 <!--               type="text" @input="changeQuestValue(item.options,i,$event.target.value)">-->
             </div>
-            <button class="delButton" :title="$t('makeDelete')" @click="deleteQuest(index)">
-                <svg fill="red" style="width: 1em;height: 1em;" viewBox="0 0 1025 1024">
+            <button class="delButton" :title="$t('makeDelete')" @click="deleteQuest($event,index)">
+                <svg fill="red" style="width: 1em;height: 1em" viewBox="0 0 1025 1024">
                     <path
                         d="M718.882684 511.351282 1010.410118 800.927611C1024.685139 815.107052 1027.762671 835.153596 1017.28356 845.70286L849.127929 1014.985224C838.649124 1025.534489 818.582055 1022.591441 804.307034 1008.412L512.781438 718.837509 223.267604 1010.296628C209.089387 1024.570118 189.044682 1027.647038 178.496643 1017.169458L9.230209 849.03282C-1.318137 838.554934 1.624604 818.49001 15.802821 804.216827L305.314511 512.759546 13.70467 223.101423C-0.570351 208.921981-3.647577 188.875438 6.831534 178.326173L174.986859 9.043809C185.46597-1.505455 205.533039 1.437592 219.80806 15.617034L511.415756 305.273319 801.039568 13.703302C815.217785-0.570187 835.26249-3.647107 845.810529 6.83078L1015.076963 174.967417C1025.625309 185.444997 1022.682568 205.509921 1008.504351 219.78341L718.882684 511.351282Z"></path>
                 </svg>
             </button>
             <!-- v-if来实现各种题目的效果 -->
         </div>
-        <div class="line"></div>
+        <!--        <div class="line"></div>-->
     </div>
 </template>
 <!--suppress JSUnresolvedVariable -->
@@ -74,11 +74,20 @@ export default {
             console.log(this.rolls)
             return JSON.stringify(this.rolls);
         },
-        deleteQuest(index) {
+        deleteQuest(event, index) {
             // delete the quest
             // this.$delete(this.rolls.quest, index)
             // this.rolls.quest.splice(index,1)
-            this.rolls.quest.splice(index, 1)
+            setTimeout(() => {
+                this.rolls.quest.splice(index, 1)
+                target.parentElement.className = "topic"
+            }, 500)
+            let target = event.target
+            while (target.tagName !== "BUTTON") {
+                target = target.parentElement
+                console.log(target.tagName)
+            }
+            target.parentElement.className = "topic animate__zoomOut animate__animated"
         },
         addQuestValue(type, optionsNumber) {
             let quest;
@@ -181,12 +190,10 @@ export default {
 
 .topic {
     width: calc(100% - 60px);
-
     padding: 10px 30px 10px 30px;
-    /*border-bottom: 1px solid #bebebe;*/
     position: relative;
-    border-top: 1px solid #bebebe;
-    text-align: left;
+    border-bottom: 1px solid #bebebe;;
+//border-top: 1px solid #bebebe; text-align: left;
 }
 
 #rollsPage {
