@@ -85,11 +85,11 @@ export default {
 
                 this.rolls.quest.splice(index, 1)
                 target.parentElement.className = "topic"
-            }, 500)
+            }, 350)
             setTimeout(()=>{
                 target.parentElement.style.margin = null // ad normally margin
                 setTimeout(()=>target.parentElement.classList.remove("transition-halfS"),510)
-            },520)
+            },370)
             let target = event.target
             while (target.tagName !== "BUTTON") {
                 target = target.parentElement
