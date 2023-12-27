@@ -81,14 +81,16 @@ export default {
             setTimeout(() => {
                 console.log(target.parentElement);
                 target.parentElement.style.marginTop = target.parentElement.offsetHeight + "px" // ad normally margin
-                setTimeout(()=>target.parentElement.classList.add("transition-halfS")/* add transition class */,20)
+                setTimeout(()=>target.parentElement.classList.add("transition-halfS")/* add transition class */,10)
+                // target.parentElement.classList.add("transition-halfS")
 
                 this.rolls.quest.splice(index, 1)
-                target.parentElement.className = "topic"
+                target.parentElement.classList.remove("animate__zoomOut")
+                target.parentElement.classList.remove("animate__animated")
             }, 350)
             setTimeout(()=>{
                 target.parentElement.style.margin = null // ad normally margin
-                setTimeout(()=>target.parentElement.classList.remove("transition-halfS"),510)
+                setTimeout(()=>target.parentElement.classList.remove("transition-halfS"),550)
             },370)
             let target = event.target
             while (target.tagName !== "BUTTON") {
