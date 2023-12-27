@@ -87,11 +87,11 @@ export default {
                 this.rolls.quest.splice(index, 1)
                 target.parentElement.classList.remove("animate__zoomOut")
                 target.parentElement.classList.remove("animate__animated")
-            }, 350)
+            }, 360)
             setTimeout(()=>{
                 target.parentElement.style.margin = null // ad normally margin
                 setTimeout(()=>target.parentElement.classList.remove("transition-halfS"),550)
-            },370)
+            },390)
             let target = event.target
             while (target.tagName !== "BUTTON") {
                 target = target.parentElement
