@@ -69,6 +69,8 @@ export default {
             // use the import data
             this.rolls = JSON.parse(this.$route.query.draft);
         }
+        const root = document.querySelector(':root');
+        root.style.setProperty('--mainColor', window.site.mainColor);
     },
     methods: {
         changeQuestValue(list, index, value) {
@@ -153,6 +155,10 @@ export default {
 }
 </script>
 <style>
+:root{
+    --mainColor: rgba(0,0,0,0);
+}
+
 .transition-halfS {
     transition: 0.5s;
 }
@@ -240,5 +246,11 @@ export default {
     height: 18px;
     margin-top: 15px;
     width: 100%;
+}
+
+.sortable-ghost {
+    background: var(--mainColor);
+    opacity: 0.25;
+    transition: 0.4s;
 }
 </style>
