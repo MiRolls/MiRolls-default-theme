@@ -2,7 +2,8 @@
     <div id="rollsPage" class="animate__animated animate__bounceInUp">
         <h2 class="TitleRollsT">{{ rolls.title }}</h2>
         <vue-draggable v-model="rolls.quest">
-            <div class="topic" v-for="(item,index) in rolls.quest" :key="index">
+            <div :class="index !== 0 ? 'topic animate__bounceIn animate__animated' : 'topic'"
+                 v-for="(item,index) in rolls.quest" :key="index">
                 <span>{{ index + 1 }}.  </span>
                 <input class="questTitle" :placeholder="$t('makeQuestBlankTitleNormal')" type="text"
                        v-model="item.title">
@@ -155,8 +156,8 @@ export default {
 }
 </script>
 <style>
-:root{
-    --mainColor: rgba(0,0,0,0);
+:root {
+    --mainColor: rgba(0, 0, 0, 0);
 }
 
 .transition-halfS {
@@ -252,8 +253,6 @@ export default {
 .sortable-ghost {
     background: var(--mainColor);
     opacity: 0.25;
-    //transition: 0.4s;
-    border-radius: 4px;
-    border: none;
+//transition: 0.4s; border-radius: 4px; border: none;
 }
 </style>
