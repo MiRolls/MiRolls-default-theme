@@ -51,11 +51,13 @@ export default {
                         //如果是radio，或者choice，要填写选项数量
                         optionsNumber: 3,//选项数量，如果是blank就不用加
                         // placeholder: 就是选项相关的提示(placeholder) 如果是选择题就不用加
-                        title: this.$t("makeQuestTitleNormal"),//题目的标题
+                        // title: this.$t("makeQuestTitleNormal"),//题目的标题
+                        title: "",
                         options: [ // 填空题不用加
-                            this.$t("makeOptions") + "1",
-                            this.$t("makeOptions") + "2",
-                            this.$t("makeOptions") + "3"
+                            "","",""
+                            // this.$t("makeOptions") + "1",
+                            // this.$t("makeOptions") + "2",
+                            // this.$t("makeOptions") + "3"
                         ]
                     }
                 ],
@@ -135,7 +137,7 @@ export default {
                 }
                 // 用for把数据给怼进去
                 for (let i = 0; i < optionsNumber; i++) {
-                    quest.options.push(this.$t("makeOptions") + (i + 1))
+                    quest.options.push("")
                 }
             } else if (type === "blank" || type === "manyBlank") {
                 quest = {
@@ -269,7 +271,7 @@ export default {
     border-bottom: black 1px solid;
     height: 18px;
     margin-top: 15px;
-    width: 100%;
+    width: calc(100% - 30px);
     background: none;
 }
 
