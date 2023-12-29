@@ -2,11 +2,16 @@
     <div id="rollsPage" class="animate__animated animate__bounceInUp">
         <h2 class="TitleRollsT">{{ rolls.title }}</h2>
         <vue-draggable v-model="rolls.quest">
-            <div :class="index !== 0 ? 'topic animate__bounceIn animate__animated' : 'topic'"
+            <div :class="index !== 0 ? 'topic animate__fadeIn animate__animated' : 'topic'"
                  v-for="(item,index) in rolls.quest" :key="index">
-                <span>{{ index + 1 }}.  </span>
-                <input class="questTitle" :placeholder="$t('makeQuestBlankTitleNormal')" type="text"
-                       v-model="item.title">
+                <div class="topic-title">
+                    <span>{{ index + 1 }}.  </span>
+                    <input class="questTitle" :placeholder="$t('makeQuestBlankTitleNormal')" type="text"
+                           v-model="item.title">
+                    <span class="topic-type">
+                        {{ getTopicType(index.type) }}
+                    </span>
+                </div>
                 <input v-if="item.type === 'blank' || item.type === 'manyBlank'" class="questPlaceholder"
                        v-model="item.placeholder" :placeholder="$t('makeQuestTips')">
                 <div v-if="item.type === 'choice' || item.type === 'radio'" class="options">
@@ -74,6 +79,17 @@ export default {
         root.style.setProperty('--mainColor', window.site.mainColor);
     },
     methods: {
+        getTopicType(rollType){
+            if (rollType === "radio"){
+                return this.$t("singleChoice")
+            } else if (rollType === "choice") {
+                return this.$t("multipleChoice")
+            } else if (rollType === "manyBlank"){
+                return this.$t("manyBlank")
+            } else {
+                return this.$t("smallBlank")
+            }
+        },
         changeQuestValue(list, index, value) {
             // this.$set(list, index, value);
             list[index] = value;
@@ -155,6 +171,11 @@ export default {
     }
 }
 </script>
+<style scoped>
+.animate__fadeIn{
+    animation-duration: 0.2s;
+}
+</style>
 <style>
 :root {
     --mainColor: rgba(0, 0, 0, 0);
@@ -200,9 +221,11 @@ export default {
     outline: none;
     border-bottom: black 1px solid;
     height: 18px;
+    padding-top: 3px;
     /*margin-top: 10px;*/
-    width: calc(100% - 25px);
+    //width: calc(100% - 25px);
     background: none;
+    flex:1;
     /*display: block;*/
 }
 
@@ -217,8 +240,8 @@ export default {
 }
 
 .topic {
-    width: calc(100% - 60px);
-    padding: 10px 30px 10px 30px;
+    width: calc(100% - 25px);
+    padding: 10px 0 10px 25px;
     position: relative;
     border-bottom: 1px solid #bebebe;
 //transition: 0.5s; //border-top: 1px solid #bebebe; text-align: left;
@@ -254,5 +277,16 @@ export default {
     background: var(--mainColor);
     opacity: 0.25;
 //transition: 0.4s; border-radius: 4px; border: none;
+}
+
+.topic-title {
+    display: inline-flex;
+    //width: calc(100% - 26px);
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.topic-type{
+    color: #dddddd;
 }
 </style>

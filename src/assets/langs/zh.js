@@ -59,6 +59,8 @@ const zh = {
     list:"列表",
     whatIsThat:"了解更多",
     savedRolls: "本地保存的问卷",
+    manyBlank: "[多行填空]",
+    smallBlank: "[单行填空]",
 }
 
 export default zh;

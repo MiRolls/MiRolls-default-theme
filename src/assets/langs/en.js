@@ -58,7 +58,9 @@ const en = {
     pieChart:"Pie chart",
     list:"List",
     whatIsThat: "Learn more",
-    savedRolls: "Saved locally"
+    savedRolls: "Saved locally",
+    manyBlank: "[Multi-Line FITB]",
+    smallBlank: '[Single-Line FITB]',
 }
 
 export default en;
