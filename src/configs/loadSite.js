@@ -10,7 +10,7 @@ function loadSite(mode, callback) {
             logo: "/favicon.png",
             mainColor: "rgb(21, 127, 248)",
             icp: "A nice questionnaire system",
-            lang: "en",
+            lang: "zh",
             needIcp: 0,
             introduce: `# MiRolls\n![image]({{Logo}})\n\nMiRolls is a nice and useful questionnaire system. It is easy to build a questionnaire system with MiRolls.\n\n![MainPage.jpeg]({{Link}}image/MainPage.png)\n\nAnd we also have good animation in MiRolls.`,
         }
