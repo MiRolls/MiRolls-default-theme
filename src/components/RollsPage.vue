@@ -246,11 +246,14 @@ export default {
     height: 18px;
     margin-top: 15px;
     width: 100%;
+    background: none;
 }
 
 .sortable-ghost {
     background: var(--mainColor);
     opacity: 0.25;
-    transition: 0.4s;
+    //transition: 0.4s;
+    border-radius: 4px;
+    border: none;
 }
 </style>
