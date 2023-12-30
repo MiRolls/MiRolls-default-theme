@@ -44,5 +44,6 @@ jobs:
             draft: false
             generate_release_notes: true
             files: ${{ secrets.ReleaseZipName }}.zip
+            name: Release ${{ github.ref }}
         env:
-            GITHUB_TOKEN: ${{ secrets.TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
