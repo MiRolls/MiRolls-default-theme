@@ -46,3 +46,4 @@ jobs:
           prerelease: false
           files: |
             ${{ secrets.ReleaseZipName }}.zip
+
