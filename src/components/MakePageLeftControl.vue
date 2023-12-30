@@ -34,8 +34,8 @@
             </button>
         </div>
         <div class="bottomControl">
-            <span class="controlTitle">{{ $t("makeRollTitle") }}</span>
-            <input type="text" id="RollsTitle" :value="$t('makeTitleNormal')"
+            <span class="controlTitle">{{$t("makeRollTitle") }}</span>
+            <input type="text" id="RollsTitle" :value="title"
                    @input="$emit('title-change',$event.target.value)">
             <button :style="{backgroundColor:backgroundColor}" id="submitRolls" @click="submitRoll">
                 {{ $t("makeSubmit") }}
@@ -47,8 +47,13 @@
 </template>
 <!--suppress JSUnresolvedVariable -->
 <script>
+import langList from "../../langList";
+
 export default {
     name: "MakePageLeftControl",
+    props: {
+        title: langList[window.site.lang].makeTitleNormal,
+    },
     data() {
         return {
             radioNumber: 3,

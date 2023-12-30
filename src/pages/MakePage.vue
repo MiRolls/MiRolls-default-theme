@@ -2,7 +2,7 @@
     <div style="height: 100vh;">
         <Message v-if="message" :message="message" :height="-100"></Message>
         <AppBar></AppBar>
-        <MakePageLeftControl @add="addQuest" @submit="submitRoll" @title-change="changeTitle" @save-roll="saveRoll"/>
+        <MakePageLeftControl :title="rollsTitle" @add="addQuest" @submit="submitRoll" @title-change="changeTitle" @save-roll="saveRoll"/>
         <RollsPage ref="rollsPage" :title="rollsTitle"/>
         <PageFooter style="margin-left: 24%"/>
     </div>

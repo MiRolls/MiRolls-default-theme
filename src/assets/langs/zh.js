@@ -4,6 +4,7 @@ const zh = {
     pageSearchTitle: "查询问卷",
     pageQueryBigData: "大数据概览",
     pageQueryDetails: "明细",
+    pageHome: "主页",
     titleOne: "不用",
     titleTwo: "登录账户",
     titleTwo2: "花费费用",
@@ -58,6 +59,8 @@ const zh = {
     list:"列表",
     whatIsThat:"了解更多",
     savedRolls: "本地保存的问卷",
+    manyBlank: "[多行填空]",
+    smallBlank: "[单行填空]",
 }
 
 export default zh;

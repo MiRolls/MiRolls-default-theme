@@ -1,11 +1,11 @@
 <template>
-    <div id="queryPage" v-show="errCode === 200">
+    <div id="queryPage" v-show="errCode !== 404">
         <left-chooser mode="bigData" :code="$route.params.code"></left-chooser>
         <big-data @notfound="errCode = 404" @success="errCode = 200"></big-data>
         <app-bar></app-bar>
         <page-footer style="margin-left: 10%"></page-footer>
     </div>
-    <not-found v-if="errCode === 404"/>
+    <not-found v-if="errCode === 404" :app-bar="true"/>
     <loading-page v-else/>
 </template>
 <script>

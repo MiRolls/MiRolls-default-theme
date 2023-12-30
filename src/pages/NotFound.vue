@@ -1,18 +1,24 @@
 <template>
     <div id="notFound">
-        <img :src="logo" alt="" id="notFoundLogo" class="animate__animated animate__headShake"/>
-        <h1 class="animate__animated animate__backInUp">404 Not Found</h1>
+        <app-bar class="animate__animated animate__fadeOutUp" v-if="appBar"></app-bar>
+        <img :src="logo" alt="" id="notFoundLogo" class="animate__animated animate__fadeInDown"/>
+        <h1 class="animate__animated animate__fadeInUp">404 Not Found</h1>
     </div>
 </template>
 
 <script>
 import "animate.css"
+import AppBar from "../components/AppBar.vue";
 
 export default {
+    components: {AppBar},
     data() {
         return {
             logo: window.site.logo
         }
+    },
+    props: {
+        appBar: false
     },
     name: "NotFound"
 }
