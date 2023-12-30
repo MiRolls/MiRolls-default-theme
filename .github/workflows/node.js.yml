@@ -32,7 +32,7 @@ jobs:
       - run: npm run build --if-present
 
       - name: Zip Files
-        run: zip -r ${{ secrets.ReleaseZipName }} ./dist
+        run: zip -r ${{ secrets.ReleaseZipName }}.zip ./dist
 
       - name: Create Release and Upload Release Asset
         uses: softprops/action-gh-release@v1
