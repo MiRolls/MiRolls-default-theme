@@ -22,3 +22,8 @@ Thanks to JetBrains for the Open Source development license(s)
 
 [MIT](https://mit-license.org)
 Copyright (c) 2022-present, Mi Liang
+
+Project to do list:
+ - [ ] Complete the project
+ - [ ] Refactor the project with radix-vue and tailwind-css
+ - [ ] Write better docs
