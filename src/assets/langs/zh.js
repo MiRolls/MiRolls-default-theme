@@ -61,6 +61,14 @@ const zh = {
     savedRolls: "本地保存的问卷",
     manyBlank: "[多行填空]",
     smallBlank: "[单行填空]",
+    makePageTutorial_1stTitle: "添加题目",
+    makePageTutorial_1sDescription: "你可以通过左边的控制栏来添加题目",
+    makePageTutorial_2ndTitle: "编辑题目",
+    makePageTutorial_2ndDescription: "你可以通过这些项目来更改你的题目的信息，例如选项名称等",
+    makePageTutorial_3rdTitle: "删除题目",
+    makePageTutorial_3rdDescription: "你可以点击这个按钮来删除一道题目，不过请注意这个过程是不可逆的哦",
+    makePageTutorial_4thTitle: "提交与标题",
+    makePageTutorial_4thDescription: "在这里你可以编辑你的标题，也可以设置保存为草稿箱/提交问卷",
 }
 
 export default zh;
