@@ -57,8 +57,33 @@ function loadSite(mode, callback) {
         document.getElementById("favicon").href = site.logo;
         document.documentElement.lang = site.lang;
         window.site = site; // something in window.site
-        document.getElementById("titleForIndex").innerHTML = site.name;
+        const root = document.querySelector(':root');
+        window.site.fontColor = determineTextColor(site.mainColor)
+        root.style.setProperty('--mainColor', window.site.mainColor);
+        document.getElementById("titleForIndex").innerHTML = site.name; // change the title
+        root.style.setProperty('--fontColor', window.site.fontColor);
         callback() // to run render code
+
+
+        function determineTextColor(backgroundColor) {
+            // deal with rgb
+            const match = backgroundColor.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+            if (!match) {
+                throw new Error('Invalid RGB format');
+            }
+
+            const r = parseInt(match[1]);
+            const g = parseInt(match[2]);
+            const b = parseInt(match[3]);
+
+            // calculate the light value
+            const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+            const threshold = 128;
+
+            // get font color
+            return luminance > threshold ? 'black' : 'white';
+        }
+
     }
 }
 

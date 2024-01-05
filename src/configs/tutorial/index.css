@@ -1,0 +1,12 @@
+.driver-popover-next-btn {
+    border: none;
+    background: var(--mainColor) !important;
+    color: var(--fontColor) !important;
+    text-shadow: none !important;
+}
+.driver-popover button:hover{
+    scale: 1.05;
+}
+.driver-popover button:active{
+    scale: 0.95;
+}

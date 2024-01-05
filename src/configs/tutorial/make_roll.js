@@ -1,5 +1,6 @@
 import {driver} from 'driver.js'
 import LangList from "../../../langList";
+import "./index.css"
 
 const make_roll = () => {
     import('driver.js/dist/driver.css')
@@ -7,7 +8,7 @@ const make_roll = () => {
         animate: true,
         onDestroyStarted: () => {
             opacity()
-            setTimeout(() => {destroy()}, 1000)
+            setTimeout(() => {destroy()}, 400)
         },
         nextBtnText: getI18n("tutorialButtonNext"),
         prevBtnText: getI18n("tutorialButtonPrevious"),
@@ -19,7 +20,7 @@ const make_roll = () => {
                 element: ".addControl",
                 popover: {
                     title: getI18n("makePageTutorial_1stTitle"),
-                    description: getI18n("makePageTutorial_1sDescription")
+                    description: getI18n("makePageTutorial_1sDescription"),
                 }
             },
             {
