@@ -2,6 +2,7 @@ import {driver} from 'driver.js'
 import LangList from "../../../langList";
 
 const make_roll = () => {
+    import('driver.js/dist/driver.css')
     const config = driver({
         showProgress: true,
         steps: [
