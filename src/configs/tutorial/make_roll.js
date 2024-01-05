@@ -4,10 +4,19 @@ import LangList from "../../../langList";
 const make_roll = () => {
     import('driver.js/dist/driver.css')
     const config = driver({
+        animate: true,
+        onDestroyStarted: () => {
+            opacity()
+            setTimeout(() => {destroy()}, 1000)
+        },
+        nextBtnText: getI18n("tutorialButtonNext"),
+        prevBtnText: getI18n("tutorialButtonPrevious"),
+        doneBtnText: getI18n("tutorialButtonDone"),
+
         showProgress: true,
         steps: [
             {
-                element: "#MakePageLeftControl",
+                element: ".addControl",
                 popover: {
                     title: getI18n("makePageTutorial_1stTitle"),
                     description: getI18n("makePageTutorial_1sDescription")
@@ -37,9 +46,21 @@ const make_roll = () => {
         ]
     })
     config.drive()
+    function destroy(){
+        config.destroy()
+    }
+    function opacity(){
+        const background = document.getElementsByClassName("driver-overlay")[0]
+        const dialog = document.getElementsByClassName("driver-popover")[0]
+        background.style.transition = "0.3s"
+        background.style.opacity = 0
+        dialog.style.transition = "0.3s"
+        dialog.style.opacity = 0
+    }
 }
 
-function getI18n(tagName){
+function getI18n(tagName) {
     return LangList[window.site.lang][tagName]
 }
+
 export default make_roll
