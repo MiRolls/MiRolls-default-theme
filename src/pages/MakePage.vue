@@ -2,7 +2,8 @@
     <div style="height: 100vh;">
         <Message v-if="message" :message="message" :height="-100"></Message>
         <AppBar></AppBar>
-        <MakePageLeftControl :title="rollsTitle" @add="addQuest" @submit="submitRoll" @title-change="changeTitle" @save-roll="saveRoll"/>
+        <MakePageLeftControl :title="rollsTitle" @add="addQuest" @submit="submitRoll" @title-change="changeTitle"
+                             @save-roll="saveRoll"/>
         <RollsPage ref="rollsPage" :title="rollsTitle"/>
         <PageFooter style="margin-left: 24%"/>
     </div>
@@ -14,6 +15,8 @@ import PageFooter from "../components/PageFooter.vue";
 import RollsPage from "../components/RollsPage.vue";
 import Message from "../components/Message.vue";
 import axios from "axios"
+import make_roll_tutorial from "../configs/tutorial/make_roll";
+import mode from "../configs/mode";
 
 export default {
     name: "MakePage",
@@ -63,6 +66,14 @@ export default {
         // axios.post("/get/site").then(data=>{
         //   this.siteLink = data.data.link
         // })
+        this.$cookies.config('99999d')
+        if (!this.$cookies.isKey("MakePageTutorial")) {// it's boolean
+            this.$cookies.set("MakePageTutorial")
+            make_roll_tutorial()
+        }
+        if (window.runmod === mode.test) {
+            this.$cookies.remove("MakePageTutorial")
+        }
         this.siteLink = window.site.link
     }
 }

@@ -61,6 +61,17 @@ const en = {
     savedRolls: "Saved locally",
     manyBlank: "[Multi-Line FITB]",
     smallBlank: '[Single-Line FITB]',
+    makePageTutorial_1stTitle: "Adding Questions",
+    makePageTutorial_1sDescription: "Use the left control to add questions.",
+    makePageTutorial_2ndTitle: "Editing Questions",
+    makePageTutorial_2ndDescription: "You can change the information about the questions via these input boxes.",
+    makePageTutorial_3rdTitle: "Deleting Questions",
+    makePageTutorial_3rdDescription: "Click the delete button to remove a question. Please be aware that this action is IRREVERSIBLE.",
+    makePageTutorial_4thTitle: "Submit And Title",
+    makePageTutorial_4thDescription: "Customize your questionnaire title in the designated field. you can also submit or save this questionnaire temporarily.",
+    tutorialButtonNext: "Next",
+    tutorialButtonPrevious: "Previous",
+    tutorialButtonDone: "Done",
 }
 
 export default en;

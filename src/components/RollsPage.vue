@@ -77,8 +77,6 @@ export default {
             // use the import data
             this.rolls = JSON.parse(this.$route.query.draft);
         }
-        const root = document.querySelector(':root');
-        root.style.setProperty('--mainColor', window.site.mainColor);
     },
     methods: {
         getTopicType(rollType){
@@ -179,10 +177,6 @@ export default {
 }
 </style>
 <style>
-:root {
-    --mainColor: rgba(0, 0, 0, 0);
-}
-
 .transition-halfS {
     transition: 0.5s;
 }

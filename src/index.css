@@ -1,11 +1,18 @@
-#app{
-  height: 100%;
-  width: 100%;
+#app {
+    height: 100%;
+    width: 100%;
 }
-body{
-  height: 100%;
-  margin: 0;
+
+body {
+    height: 100%;
+    margin: 0;
 }
-html{
-  height: 100%;
+
+html {
+    height: 100%;
+}
+
+:root {
+    --mainColor: rgb(0, 0, 0);
+    --fontColor: rgb(0, 0, 0);
 }
