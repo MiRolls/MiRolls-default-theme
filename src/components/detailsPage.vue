@@ -1,16 +1,30 @@
 <template>
     <div id="details">
-        <h1 class="title">Somethings</h1>
-        <div class="answers"><span>1.问卷回答</span></div>
+        <h1 class="title">{{ title }}</h1>
+        <!--<div class="answers" v-for="(item,index) in data" @mouseover="()=>showItem = index" @onmouseleave="_=>setTimeout(_=>{showItem = -1},200)">-->
+        <div class="answers" v-for="(item,index) in data"
+             @mouseover="()=> showItem = index"
+             @mouseleave="() => showItem = -1">
+            <span>1.问卷回答</span> <br>
+            <span style="color: gray">悬浮查看详情</span>
+            <div class="hoverBox" v-show="showItem === index">
+                {{item.answer}}
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 export default {
     name: "detailsPage",
+    props: {
+        title: "", // questionnaire title
+        data: Array, // answerList
+
+    },
     data: () => {
         return {
-
+            showItem: -1, //show which item?
         }
     }
 }
@@ -37,5 +51,18 @@ export default {
     height: 40px;
     padding: 10px 30px;
     border-bottom: #b7b7b7 solid 1px;
+    cursor: default;
+}
+
+.hoverBox {
+    background: white;
+    width: 250px;
+    min-height: 100px;
+    position: absolute;
+    z-index: 100;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.38);
+    border-radius: 10px;
+    margin-top: -10px;
 }
 </style>

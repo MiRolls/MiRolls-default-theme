@@ -27,6 +27,7 @@ export default {
     },
     mounted() {
         if (window.runmod === "test") {
+            this.title = "Test"
             this.data = [
                 {
                     link: "aaaa",
