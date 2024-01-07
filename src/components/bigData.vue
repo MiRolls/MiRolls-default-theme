@@ -60,8 +60,8 @@ onMounted(() => {
     // axios.get("/")
         .then(res => {
             data.title = res.data.title
-            data.answerOfNumber = res.data.answerOfNumber
-            data.questions = res.data.questions
+            data.answerOfNumber = res.data.data.answerOfNumber
+            data.questions = res.data.data.questions
             data.questions.forEach((item) => {
                 let option; //new var. option
                 if (item.type === "radio") {
