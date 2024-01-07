@@ -5,10 +5,10 @@
         <div class="answers" v-for="(item,index) in data"
              @mouseover="()=> showItem = index"
              @mouseleave="() => showItem = -1">
-            <span>1.问卷回答</span> <br>
-            <span style="color: gray">悬浮查看详情</span>
+            <span>{{ index + 1 }}.{{ $t("questionnaireAnswer") }}</span> <br>
+            <span style="color: gray">{{ $t("hoverThis") }}</span>
             <div class="hoverBox" v-show="showItem === index">
-                {{item.answer}}
+                {{ item.answer }}
             </div>
         </div>
     </div>
