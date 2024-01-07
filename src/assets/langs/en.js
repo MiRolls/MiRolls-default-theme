@@ -72,6 +72,8 @@ const en = {
     tutorialButtonNext: "Next",
     tutorialButtonPrevious: "Previous",
     tutorialButtonDone: "Done",
+    questionnaireAnswer:"Questionnaire Answer",
+    hoverThis:"Levitate to learn more",
 }
 
 export default en;
