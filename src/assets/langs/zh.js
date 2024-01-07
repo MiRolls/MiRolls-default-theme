@@ -72,6 +72,9 @@ const zh = {
     tutorialButtonNext: "下一步",
     tutorialButtonPrevious: "上一步",
     tutorialButtonDone: "完成",
+    questionnaireAnswer:"问卷回答",
+    hoverThis:"悬浮查看详情",
+
 }
 
 export default zh;
