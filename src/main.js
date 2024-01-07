@@ -11,9 +11,10 @@ import githubTheme from '@kangc/v-md-editor/lib/theme/github.js';
 import '@kangc/v-md-editor/lib/style/preview.css';
 import '@kangc/v-md-editor/lib/theme/style/github.css';
 import VMdEditor from '@kangc/v-md-editor';
+import mode from "./configs/mode";
 
 
-loadSite("test", () => {
+loadSite(mode.release, () => {
     VMdEditor.use(githubTheme);
     const i18n = getI18n(window.site)
     const router = getRouter(window.site)
