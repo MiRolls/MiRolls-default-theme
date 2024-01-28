@@ -24,7 +24,7 @@ Thanks to JetBrains for the Open Source development license(s)
 
 ## License
 
-[MIT](https://mit-license.org)
+[AGPL3.0](https://www.gnu.org/licenses/)
 Copyright (c) 2022-present, Mi Liang
 
 
